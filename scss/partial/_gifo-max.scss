@@ -1,0 +1,41 @@
+.seccion-2 {
+    .img-box.gifo-max {
+        padding-right: 7.7%;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        /* text-align: center; */
+        justify-content: center;
+        align-items: center;
+        background: rgba(255,255,255,0.90);
+        flex-direction: column;
+        padding-left: 7.7%;
+        img.slider-img.gifo-max {
+            width: 100%;
+        }
+        .pie-gifo.gifo-max {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 61.8% 1fr;
+            grid-template-rows: repeat(2, 22px);
+            p.primer-parrafo.gifo-max {
+                text-align: left;
+                padding-left: 5%;
+            }
+            p.segundo-parrafo.gifo-max {
+                grid-column: 1/2;
+                grid-row: 2/3;
+                text-align: left;
+            }
+            .contenedor-imagenes.gifo-max {
+                grid-column: 2/3;
+                grid-row: 1/3;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+        }
+    }
+}

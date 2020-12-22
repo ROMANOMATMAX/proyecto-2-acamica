@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,AAAA,SAAS,AAAC,CACrB,aAAa,CAAE,MAAM,CACxB,AAED,AAAA,cAAc,AAAA,SAAS,AAAC,CACpB,aAAa,CAAE,IAAI,CACtB",
+    "sources": [
+        "../scss/partial/busqueda-activa.scss"
+    ],
+    "names": [],
+    "file": "busqueda-activa.min.css"
+}

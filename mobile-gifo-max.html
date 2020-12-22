@@ -27,25 +27,19 @@
         </div>
     </header>
     <main>
-        <section class="seccion-1-alt">
-            <div class="imagen-alt"><img src="./assets/icon-favoritos.svg" alt="corazon-celeste"></div>
-            <h2>Favoritos</h2>
-            <div class="galeria-imagenes">
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
-                <div class="imagen-galeria"><img src="./assets/AnE.R.A.Univac1103computerinthe1950s.png" alt=""></div>
+        <section class="seccion-1">
+            <h1>Inspírate, busca, guarda, y crea los mejores <span class="palabra-gifos">GIFOS</span></h1>
+            <div class="imagen-seccion-1">
+                <img src="./assets/ilustra_header.svg" alt="">
             </div>
-            <div class="contenedor-button">
-                <button class="btn">VER MÁS</button>
+            <div class="buscador">
+                <input type="text" name="barra-buscadora" id="" placeholder="Busca GIFOS y más">
+                <input type="checkbox" name="lupa" id="lupa">
+                <label for="lupa"><img src="./assets/icon-search.svg" alt="lupa-busqueda"></label>
+            </div>
+            <div class="pie-seccion-1">
+                <h3>Trending:</h3>
+                <p>Reactions, Entertainment, Sports, Stickers, Artists</p>
             </div>
         </section>
         <section class="seccion-2">
@@ -53,8 +47,16 @@
             <p>Mira los últimos GIFOS de nuestra comunidad.</p>
         <!-- ACA FALTA AGREGAR EL CARRUSEL DE IMAGENES AVERIGUAR COMO SE HACE EL HTML -->
             <div class="slider">
-                <div class="img-box">
-                    <img src="./assets/icon-busqueda-sin-resultado.svg" alt="" class="slider-img">
+                <div class="img-box gifo-max">
+                    <img src="./assets/icon-busqueda-sin-resultado.svg" alt="" class="slider-img gifo-max">
+                    <div class="pie-gifo gifo-max">
+                        <p class="primer-parrafo gifo-max">User</p>
+                        <p class="segundo-parrafo gifo-max">Título GIFO</p>
+                        <div class="contenedor-imagenes gifo-max">
+                            <img src="./assets/icon-fav-active.svg" alt="">
+                            <img src="./assets/icon-download.svg" alt="">
+                        </div>
+                    </div>
                 </div>
                 <!-- Next and prev buttons -->
                 <button class="btn" onclick="prev()">Prev</button>
