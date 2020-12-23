@@ -1,0 +1,82 @@
+@media (min-width: 1024px) {
+    //------------HEADER--------------------------------
+    header .container-flex {
+        margin-bottom: 88.9px;
+        label {
+            display: none;
+        }
+        input#boton-menu {
+            display: none;
+        }
+        nav ul {
+            opacity: 1;
+            height: auto;
+            position: initial;
+            background: #fff;
+            display: grid;
+            grid-template-columns: 130px 81px 71px 54px;
+            grid-template-rows: 16px 16px;
+            grid-column-gap: 50px;
+            li.item-1 {
+                grid-column: 1/2;
+                grid-row: 1/2;    
+            }
+            li.item-2 {
+                grid-column: 2/3;
+                grid-row: 1/2;    
+            }
+            li.item-3 {
+                grid-column: 3/4;
+                grid-row: 1/2;    
+            }
+            li.item-4 {
+                display: block;
+                grid-column: 4/5;
+                grid-row: 1/2;    
+            }
+            li a {
+                color: #572EE5;
+                text-transform: uppercase;
+                font-size: 13px;
+            }
+        }
+    }
+    //----------SECCION-1-------------------
+    .seccion-1 {
+        margin-bottom: 95px;
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            color: #572EE5;
+            text-align: center;
+            padding-right: 25%;
+            padding-left: 25%;
+            margin-bottom: 31px;
+        }
+        div.imagen-seccion-1 {
+            width: 25%;
+        }
+        div.buscador {
+            padding-right: 30.9%;
+            padding-left: 30.9%;
+            margin-bottom: 73px;
+            input[type="checkbox"] {
+                top: 35%;
+                right: 35%;
+            }
+            label {
+                top: 32%;
+                right: 34.5%;
+            }
+        }
+        div.pie-seccion-1 {
+            h3 {
+                font-size: 18px;
+            }
+            p {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+    }
+}

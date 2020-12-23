@@ -9,12 +9,15 @@
         font-size: 25px;
         color: #572EE5;
         text-align: center;
-        padding-right: 30%;
-        padding-left: 30%;
+        padding-right: 0;
+        padding-left: 0;
         margin-bottom: 31px;
     }
-    div.imagen-seccion-1 img {
-        max-width: 100%;
+    div.imagen-seccion-1 {
+        width: 80%;
+        img {
+            max-width: 100%;
+        }
     }
     span.palabra-gifos {
         color: #5ED7C6;
@@ -25,6 +28,7 @@
         width: 100%;
         position: relative;
         margin-bottom: 31px;
+        margin-top: -5px;
         input[type="text"] {
             width: 100%;
             padding: 15px 50px;

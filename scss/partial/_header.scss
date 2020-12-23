@@ -47,6 +47,9 @@ header .container-flex {
                 pointer-events: none;
             }
         }
+        li.item-4 {
+            display: none;
+        }
         span.linea-divisoria{
             width: 15%;
             opacity: 0.5;
