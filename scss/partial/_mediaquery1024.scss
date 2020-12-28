@@ -79,4 +79,91 @@
             }
         }
     }
-}
+    //------------seccion-1-alt----------------------
+    .seccion-1-alt {
+        margin-bottom: 190px;
+        .galeria-imagenes {
+            display: grid;
+            grid-column-gap: 2%;
+            padding-left: 10.8%;
+            padding-right: 10.8%;
+            grid-row-gap: 15px;
+            grid-template-columns: repeat(4, 1fr);
+            margin-bottom: 75px;
+            grid-template-rows: repeat(3, 145px);
+        }
+        .galeria-imagenes.gifo {
+            grid-template-rows: repeat(2, 210px);
+        }
+        .img-fav-sin-result {
+            text-align: center;
+            img {
+                margin-bottom: 23.7px;
+            }
+            p {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 22px;
+                color: #50E3C2;
+                font-weight: 700;
+                padding-right: 25%;
+                padding-left: 25%;
+            }
+        }
+    }
+    section.seccion-1.crear-gifos {
+            display: grid;
+            grid-template-columns: 26.1% 47.8% 26.1%;
+            grid-template-rows: 390px;
+            .img-camara-1 {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-left: 20%;
+                .img-uno {
+                    max-width: 100%;
+                }
+                .img-dos {
+                    max-width: 100%;
+                    position: relative;
+                    bottom: 35px;
+                }
+            }
+            .img-camara-2{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                bottom: 42px;
+            }
+            .intrucciones {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid #572EE5;
+                p.parrafo-uno {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 25px;
+                    color: #572EE5;
+                    font-weight: 700;
+                    text-align: center;
+                }
+                p.parrafo-dos {
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                    color: #000000;
+                    margin-bottom: 5px;
+                }
+                p.parrafo-tres {
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                    color: #000000;
+                }
+    
+            }
+        }
+    }
+
+//------------seccion-1-crear-gifos----------------------

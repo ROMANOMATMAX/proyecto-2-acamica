@@ -4,6 +4,54 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 45px;
+    .crear-gifos {
+        display: grid;
+        grid-template-columns: 181px 91px 1fr;
+        grid-template-rows: 390px;
+        padding-left: 10.8%;
+        padding-right: 26.1%;
+        .img-camara-1 {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img-camara-2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            bottom: 42px;
+        }
+        .intrucciones {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #572EE5;
+            p.parrafo-uno {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid #572EE5;
+            }
+            p.parrafo-dos {
+                font-family: 'Roboto', sans-serif;
+                font-size: 16px;
+                color: #000000;
+                margin-bottom: 5px;
+            }
+            p.parrafo-tres {
+                font-family: 'Roboto', sans-serif;
+                font-size: 16px;
+                color: #000000;
+            }
+
+        }
+    }
     h1 {
         font-family: 'Montserrat', sans-serif;
         font-size: 25px;
@@ -15,6 +63,7 @@
     }
     div.imagen-seccion-1 {
         width: 80%;
+        text-align: center;
         img {
             max-width: 100%;
         }
