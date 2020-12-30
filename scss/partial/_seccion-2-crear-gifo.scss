@@ -1,22 +1,83 @@
 section.pie-crear-gifo {
-    .numeracion {
-        padding-right: 40%;
-        padding-left: 40%;
-        /* text-align: center; */
-        display: flex;
-        justify-content: space-between;
-        p {
-            width: 30px;
-            height: 30px;
-            border: 1px solid #572EE5;
+    text-align: center;
+    .primera-linea {
+        display: grid;
+        grid-template-columns: 40% 1fr 40%;
+        grid-template-rows: 32px;
+        margin-bottom: 19px;
+        .primer-cuadricula {
+            grid-column: 1/2;
+            grid-row: 1/2;
+        }
+        .numeracion {
+            grid-column: 2/3;
+            grid-row: 1/2;
             /* text-align: center; */
             display: flex;
-            font-size: 18px;
-            color: #572EE5;
-            border-radius: 50%;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Roboto', sans-serif;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            p {
+                width: 30px;
+                height: 30px;
+                border: 1px solid rgb(87, 46, 229);
+                /* text-align: center; */
+                display: flex;
+                font-size: 18px;
+                color: rgb(87, 46, 229);
+                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Roboto', sans-serif;
+            }
+            p.first-step {
+                background-color: #572EE5;
+                color: #fff;
+            }
+            p.second-step {
+                background-color: #572EE5;
+                color: #fff;
+            }
+            p.third-step {
+                background-color: #572EE5;
+                color: #fff; 
+            }
         }
+        .ultima-cuadricula {
+            grid-column: 3/4;
+            grid-row: 1/2;
+            padding-right: 40%;
+        }
+        .ultima-cuadricula-rep-cap {
+            grid-column: 3/4;
+            grid-row: 1/2;
+            padding-right: 53%;
+            p {
+                color: #572EE5;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 13px;
+                text-decoration: underline;
+            }
+        }
+    }
+    hr {
+        height: 5px;
+        width: 50%;
+        background: #572EE5;
+        color: #572EE5;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-bottom: 20.1px;
+    }
+    .contenedor-button .btn{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: #572EE5;
+        border: 1px solid #572EE5;
+        border-radius: 25px;
+        background-color: #fff;
+        padding-top: 18px;
+        padding-bottom: 16px;
     }
 }
