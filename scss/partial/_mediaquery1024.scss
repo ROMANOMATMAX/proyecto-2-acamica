@@ -1,4 +1,7 @@
 @media (min-width: 1024px) {
+    //body
+    body {
+    }
     //------------HEADER--------------------------------
     header .container-flex {
         margin-bottom: 88.9px;
@@ -19,7 +22,10 @@
             grid-column-gap: 50px;
             li.item-1 {
                 grid-column: 1/2;
-                grid-row: 1/2;    
+                grid-row: 1/2;  
+                color: #572EE5;
+                text-transform: uppercase;
+                font-size: 13px;  
             }
             li.item-2 {
                 grid-column: 2/3;
@@ -39,6 +45,12 @@
                 text-transform: uppercase;
                 font-size: 13px;
             }
+            body.dark & {
+                background: #37383C;
+            }
+        }
+        body.dark & {
+            background: #37383C;
         }
     }
     //----------SECCION-1-------------------
@@ -115,6 +127,13 @@
             grid-template-columns: 26.1% 47.8% 26.1%;
             grid-template-rows: 390px;
             margin-bottom: 24px;
+            position: relative;
+            &::before{
+                content: url(../../assets/pelicula.svg);
+                position: absolute;
+                bottom: -80px;
+                right: 12%;
+            }
             .img-camara-1 {
                 height: 100%;
                 display: flex;
@@ -166,21 +185,17 @@
                 .contenido-video-first {
                     width: 100%;
                     position: relative;
-                    height: 100%;
                     text-align: center;
-                    img {
+                    img.imagen-principal {
                         max-width: 100%;
-                        height: 100%;
                     }
                 }
                 .contenido-video-second {
                     width: 100%;
                     position: relative;
-                    height: 100%;
                     text-align: center;
-                    img {
+                    img.imagen-principal {
                         max-width: 100%;
-                        height: 100%;
                     }
                     &:before {
                         content: "Estamos subiendo tu GIFO";
@@ -203,6 +218,49 @@
                     }
                     &:after {
                         content: url(../../assets/loader.svg);
+                        position: absolute;
+                        left: 50%;
+                        top: 30%;
+                    }
+                }
+                .contenido-video-third {
+                    width: 100%;
+                    position: relative;
+                    text-align: center;
+                    img.imagen-principal {
+                        max-width: 100%;
+                    }
+                    img.icono-descarga {
+                        position: absolute;
+                        top: 5px;
+                        right: 10%;
+                    }
+                    img.icono-link {
+                        position: absolute;
+                        top: 5px;
+                        right: 1.2%;
+                    }
+                    &:before {
+                        content: "GIFO subido con éxito";
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+                        background: #572EE5;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        opacity: 0.6;
+                        font-family: 'Montserrat', sans-serif;
+                        font-size: 15px;
+                        color: #FFFFFF;
+                        font-weight: 700;
+                    }
+                    &:after {
+                        content: url(../../assets/ok.svg);
                         position: absolute;
                         left: 50%;
                         top: 30%;

@@ -27,4 +27,12 @@ footer {
         color: #000000;
         font-weight: 500;
     }
+    body.dark & {
+        p.encabezado-footer {
+            color: #fff;
+        }
+        p.pie-footer {
+            color: #fff;
+        }
+    }
 }
