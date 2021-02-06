@@ -27,26 +27,33 @@
         padding-right: 5.3%;
         padding-left: 5.3%;
         width: 100%;
-        position: relative;
         margin-bottom: 31px;
         margin-top: -5px;
-        input[type="text"] {
-            width: 100%;
-            padding: 15px 50px;
-            border-radius: 27px;
-            border: 1px solid #572EE5;
+        form {
+            position: relative;
+            input[type="text"] {
+                width: 100%;
+                padding: 15px 50px;
+                border-radius: 27px;
+                border: 1px solid #572EE5;
+            }
+            input[type="checkbox"] {
+                opacity: 0;
+                position: absolute;
+                top: 30%;
+                right: 10.7%;
+            }
+            label {
+                position: absolute;
+                top: 25%;
+                right: 10%;
+            }   
         }
-        input[type="checkbox"] {
-            opacity: 0;
-            position: absolute;
-            top: 15px;
-            right: 30px;
-        }
-        label {
-            position: absolute;
-            top: 13px;
-            right: 25px;
-        }
+        // ul {
+        //     position: absolute;
+        //     top: 70px;
+        //     left: 32%;
+        // }
     }
     div.pie-seccion-1 {
         h3 {

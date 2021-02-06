@@ -104,15 +104,17 @@ lista.addEventListener("click", function (e) {
 //EventListener del click en la lupa
 buscadaOn.addEventListener("change", function () {
     console.log("Hola niños2");
+    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value;
 });
 
 
 //function para encontrar que url del array esta actualmente dando contenido a imagen 1
 let rightSlider = document.getElementById("right-slider");
+let leftSlider = document.getElementById("left-slider");
 
 function getIndexUrl(currentSrc) {
-    for(let i= 0; i<copiaContent.data.length; i++) {
-        if(copiaContent.data[i].images.downsized.url=== currentSrc) {    
+    for(let i= 0; i<copiaContent.length; i++) {
+        if(copiaContent[i].url=== currentSrc) {    
             return i;
         }
     }
@@ -121,9 +123,47 @@ function getIndexUrl(currentSrc) {
 rightSlider.addEventListener('click', () => {
     console.log("right-slide");
     let indice = getIndexUrl(firstTrending.getAttribute("src"));
-    firstTrending.setAttribute("src", copiaContent.data[indice+1].images.downsized.url);
-    secondTrending.setAttribute("src", copiaContent.data[indice+2].images.downsized.url);
-    thirdTrending.setAttribute("src", copiaContent.data[indice+3].images.downsized.url);
+    console.log(indice);
+    let firstSrc = "";
+    let secondSrc = "";
+    if(indice === 0){
+        console.log("otro aqui");
+        secondTrending.setAttribute("src", copiaContent[0].url);
+        thirdTrending.setAttribute("src", copiaContent[1].url);
+        firstTrending.setAttribute("src", copiaContent[19].url);
+    }
+    else {
+        // firstTrending.setAttribute("src", copiaContent[indice+1].url);
+        console.log("entre aquiiiii");
+        firstSrc = firstTrending.getAttribute("src")
+        secondSrc = secondTrending.getAttribute("src");
+        secondTrending.setAttribute("src", firstSrc);
+        thirdTrending.setAttribute("src", secondSrc);
+        firstTrending.setAttribute("src", copiaContent[indice-1].url);
+    }
+});
+
+leftSlider.addEventListener('click', () => {
+    console.log("left-slide");
+    let indice = getIndexUrl(thirdTrending.getAttribute("src"));
+    console.log(indice);
+    let firstSrc = "";
+    let secondSrc = "";
+    if(indice === copiaContent.length -1){
+        console.log("otro aqui");
+        secondTrending.setAttribute("src", copiaContent[19].url);
+        thirdTrending.setAttribute("src", copiaContent[0].url);
+        firstTrending.setAttribute("src", copiaContent[18].url);
+    }
+    else {
+        // firstTrending.setAttribute("src", copiaContent[indice+1].url);
+        console.log("entre aquiiiii");
+        secondSrc = secondTrending.getAttribute("src");
+        thirdSrc = thirdTrending.getAttribute("src");
+        firstTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", thirdSrc);
+        thirdTrending.setAttribute("src", copiaContent[indice+1].url);
+    }
 });
 
 const firstTrending = document.getElementById("firstTrending");
@@ -323,7 +363,7 @@ capaOpaca.addEventListener("mouseleave", (e) => {
     
 // });
 
-let leftSlider = document.getElementById("left-slider");
+// let leftSlider = document.getElementById("left-slider");
 // let rightSlider = document.getElementById("right-slider");
 
 leftSlider.addEventListener("mouseenter", (e) => {
@@ -370,3 +410,7 @@ rightSlider.addEventListener("mouseleave", (e) => {
         e.target.style.background = "";  
     }
 }); 
+
+
+let url_string = window.location.href;
+console.log(url_string);
