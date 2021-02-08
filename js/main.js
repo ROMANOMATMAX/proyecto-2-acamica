@@ -104,7 +104,7 @@ lista.addEventListener("click", function (e) {
 //EventListener del click en la lupa
 buscadaOn.addEventListener("change", function () {
     console.log("Hola niños2");
-    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value;
+    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value + '?modoNocturnoOn=' + modoNocturnoOn;
 });
 
 
@@ -175,40 +175,40 @@ let copiaContent =[];
 (function() {
     let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=20`;
     fetch(url)
-                .then( response => response.json()) //.json es tmb una funcion asincrona que resp con promesa
-                .then(content => {
-                    console.log(content);
-                    console.log(content.data);
-                    console.log(content.data[0].title);
-                    console.log(content.data[0].username);
-                    copiaContent = content.data.map(function(obj){
-                        let i = 0;
-                        console.log(obj);
-                        var rObj = {};
-                        rObj.title = obj.title;
-                        rObj.username = obj.username;
-                        rObj.url = obj.images.downsized.url
-                        return rObj;
-                        });
-                    firstTrending.setAttribute("src", content.data[0].images.downsized.url);
-                    secondTrending.setAttribute("src", content.data[1].images.downsized.url);
-                    thirdTrending.setAttribute("src", content.data[2].images.downsized.url);
-                    // console.log(content.data);
-                    // console.log(content.meta);
-                    // let fig = document.createElement('figure');
-                    // let img = document.createElement('img');
-                    // let fc = document.createElement('figcaption');
-                    // img.src = content.data[0].images.downsized.url;
-                    // img.alt = content.data[0].title;
-                    // fc.textContent = content.data[0].title;
-                    // fig.appendChild(img);
-                    // fig.appendChild(fc);
-                    // let out = document.querySelector(".out");
-                    // out.insertAdjacentElement('afterbegin', fig);
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+    .then( response => response.json()) //.json es tmb una funcion asincrona que resp con promesa
+    .then(content => {
+        console.log(content);
+        console.log(content.data);
+        console.log(content.data[0].title);
+        console.log(content.data[0].username);
+        copiaContent = content.data.map(function(obj){
+            let i = 0;
+            console.log(obj);
+            var rObj = {};
+            rObj.title = obj.title;
+            rObj.username = obj.username;
+            rObj.url = obj.images.downsized.url
+            return rObj;
+            });
+        firstTrending.setAttribute("src", content.data[0].images.downsized.url);
+        secondTrending.setAttribute("src", content.data[1].images.downsized.url);
+        thirdTrending.setAttribute("src", content.data[2].images.downsized.url);
+        // console.log(content.data);
+        // console.log(content.meta);
+        // let fig = document.createElement('figure');
+        // let img = document.createElement('img');
+        // let fc = document.createElement('figcaption');
+        // img.src = content.data[0].images.downsized.url;
+        // img.alt = content.data[0].title;
+        // fc.textContent = content.data[0].title;
+        // fig.appendChild(img);
+        // fig.appendChild(fc);
+        // let out = document.querySelector(".out");
+        // out.insertAdjacentElement('afterbegin', fig);
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }());
 
 //Hover de la seccion trending
@@ -223,16 +223,17 @@ let containerThreeBtns = document.createElement("div");
 
 thirdImage.addEventListener("mouseenter", (e) => {
     // e.preventDefault();
+    let indiceInterno = getIndexUrl(thirdImage.getAttribute("src"));
     console.log("mouseenterImg3");
     console.log(e.target);
     // setTimeout(()=> {
     capaOpaca.className = "capaOpaca";
     e.target.parentNode.insertBefore(capaOpaca, e.target);
-    username.textContent = copiaContent[0].username;
+    username.textContent = copiaContent[indiceInterno].username;
     username.className = "user-name";
     capaOpaca.appendChild(username);
     // e.target.parentNode.insertBefore(username, capaOpaca);
-    title.textContent = copiaContent[0].title;
+    title.textContent = copiaContent[indiceInterno].title;
     title.className = "title";
     capaOpaca.appendChild(title);
     // e.target.parentNode.insertBefore(title, username);
@@ -254,16 +255,17 @@ thirdImage.addEventListener("mouseenter", (e) => {
 
 secondImage.addEventListener("mouseenter", (e) => {
     // e.preventDefault();
+    let indiceInterno = getIndexUrl(secondImage.getAttribute("src"));
     console.log("mouseenterImg3");
     console.log(e.target);
     // setTimeout(()=> {
     capaOpaca.className = "capaOpaca";
     e.target.parentNode.insertBefore(capaOpaca, e.target);
-    username.textContent = copiaContent[1].username;
+    username.textContent = copiaContent[indiceInterno].username;
     username.className = "user-name";
     capaOpaca.appendChild(username);
     // e.target.parentNode.insertBefore(username, capaOpaca);
-    title.textContent = copiaContent[1].title;
+    title.textContent = copiaContent[indiceInterno].title;
     title.className = "title";
     capaOpaca.appendChild(title);
     // e.target.parentNode.insertBefore(title, username);
@@ -284,16 +286,17 @@ secondImage.addEventListener("mouseenter", (e) => {
 
 firstImage.addEventListener("mouseenter", (e) => {
     // e.preventDefault();
+    let indiceInterno = getIndexUrl(firstImage.getAttribute("src"));
     console.log("mouseenterImg3");
     console.log(e.target);
     // setTimeout(()=> {
     capaOpaca.className = "capaOpaca";
     e.target.parentNode.insertBefore(capaOpaca, e.target);
-    username.textContent = copiaContent[2].username;
+    username.textContent = copiaContent[indiceInterno].username;
     username.className = "user-name";
     capaOpaca.appendChild(username);
     // e.target.parentNode.insertBefore(username, capaOpaca);
-    title.textContent = copiaContent[2].title;
+    title.textContent = copiaContent[indiceInterno].title;
     title.className = "title";
     capaOpaca.appendChild(title);
     // e.target.parentNode.insertBefore(title, username);

@@ -10,18 +10,19 @@
 </head>
 <body>
     <header>
-        <div class="container-flex busq-act">
+        <div class="container-flex">
             <div class="logo"><img src="./assets/logo-mobile-modo-noct.svg" alt="logo"><p>GIFOS</p></div>
             <nav class="menu-navegacion">
                 <input type="checkbox" name="boton-menu" id="boton-menu">
-                <label for="boton-menu"><img src="./assets/burger.svg" alt=""></label>
+                <label for="boton-menu"><img id = "menu-hamburguesa" src="./assets/burger.svg" alt=""></label>
                 <ul>
-                    <li><a href="">Modo Nocturno</a></li>
+                    <li class="item-1" id="a_modoNocturno">Modo Nocturno</li>
                     <span class="linea-divisoria"></span>
-                    <li><a href="">Favoritos</a></li>
+                    <li class="item-2"><a href="">Favoritos</a></li>
                     <span class="linea-divisoria"></span>
-                    <li><a href="">Mis GIFOS</a></li>
+                    <li class="item-3"><a href="">Mis GIFOS</a></li>
                     <span class="linea-divisoria"></span>
+                    <li class="item-4"><button><img src="./assets/button-crear-gifo.svg" alt=""></button></li>
                 </ul>
             </nav>
         </div>
@@ -34,7 +35,7 @@
             </div>
             <div class="buscador">
                 <form action="">
-                    <input type="text" name="barra-buscadora" id="" placeholder="Busca GIFOS y más">
+                    <input type="text" name="barra-buscadora" id="buscador-palabra" placeholder="Busca GIFOS y más">
                     <input type="checkbox" name="lupa" id="lupa">
                     <label for="lupa"><img src="./assets/icon-search.svg" alt="lupa-busqueda"></label>    
                 </form>
