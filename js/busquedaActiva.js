@@ -10,7 +10,10 @@
         function init() {
             // document.getElementById("btnSearch").addEventListener"click", ev => 
             //     ev.preventDefault();
+            let copiaContent;
+            let buscadaOn = document.getElementById("lupa");
             let url_string = window.location.href;
+            let verMasBtn = document.getElementById("verMasBtn");
             console.log(url_string);
             let url = new URL(url_string);
             let lookingFor = url.searchParams.get("lookingFor");
@@ -72,4 +75,70 @@
                 .catch(err => {
                     console.log(err);
                 })
+
+                function getIndexUrl(currentSrc) {
+                    for(let i= 0; i<copiaContent.length; i++) {
+                        if(copiaContent[i].url=== currentSrc) {    
+                            return i;
+                        }
+                    }
+                }
+
+                verMasBtn.addEventListener('click', () => {
+                    console.log("right-slide");
+                    let indice = getIndexUrl(imgFound1.getAttribute("src"));
+                    console.log(indice);
+                    let src1 = "";
+                    let src2 = "";
+                    let src3 = "";
+                    let src4 = "";
+                    let src5 = "";
+                    let src6 = "";
+                    let src7 = "";
+                    let src8 = "";
+                    // let src9 = "";
+                    // let src10 = "";
+                    // let src11 = "";
+                    // let src12 = "";
+                    if(indice === 0){
+                        console.log("otro aqui");
+                        imgFound1.setAttribute("src", copiaContent[20].url);
+                        imgFound2.setAttribute("src", copiaContent[21].url);
+                        imgFound3.setAttribute("src", copiaContent[22].url);
+                        imgFound4.setAttribute("src", copiaContent[23].url);
+                    }
+                    else {
+                        // firstTrending.setAttribute("src", copiaContent[indice+1].url);
+                        console.log("entre aquiiiii");
+                        src1 = imgFound1.getAttribute("src");
+                        src2 = imgFound2.getAttribute("src");
+                        src3 = imgFound3.getAttribute("src");
+                        src4 = imgFound4.getAttribute("src");
+                        src5 = imgFound5.getAttribute("src");
+                        src6 = imgFound6.getAttribute("src");
+                        src7 = imgFound7.getAttribute("src");
+                        src8 = imgFound8.getAttribute("src");
+                        // src9 = imgFound9.getAttribute("src");
+                        // src10 = imgFound10.getAttribute("src");
+                        // src11 = imgFound11.getAttribute("src");
+                        // src12 = imgFound12.getAttribute("src");
+                        imgFound5.setAttribute("src", src1);
+                        imgFound6.setAttribute("src", src2);
+                        imgFound7.setAttribute("src", src3);
+                        imgFound8.setAttribute("src", src4);
+                        imgFound9.setAttribute("src", src5);
+                        imgFound10.setAttribute("src", src6);
+                        imgFound11.setAttribute("src", src7);
+                        imgFound12.setAttribute("src", src8);
+                        imgFound1.setAttribute("src", copiaContent[indice-4].url);
+                        imgFound2.setAttribute("src", copiaContent[indice-3].url);
+                        imgFound3.setAttribute("src", copiaContent[indice-2].url);
+                        imgFound4.setAttribute("src", copiaContent[indice-1].url);
+                    }
+                });
+
+                buscadaOn.addEventListener("change", function () {
+                    console.log("Hola niños2");
+                    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value;
+                });
         }
