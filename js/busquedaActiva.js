@@ -1,5 +1,29 @@
 
 let expandImgFound1;
+let expandImgFound2;
+let expandImgFound3;
+let expandImgFound4;
+let expandImgFound5;
+let expandImgFound6;
+let expandImgFound7;
+let expandImgFound8;
+let expandImgFound9;
+let expandImgFound10;
+let expandImgFound11;
+let expandImgFound12;
+let expandImgFound13;
+let expandImgFound14;
+let expandImgFound15;
+let expandImgFound16;
+let expandImgFound17;
+let expandImgFound18;
+let expandImgFound19;
+let expandImgFound20;
+let expandImgFound21;
+let expandImgFound22;
+let expandImgFound23;
+let expandImgFound24;
+let expandFirstTrendingImg;
 let copiaContent1;
 let buscadaOn = document.getElementById("lupa");
 let inputText = document.getElementById("buscador-palabra");
@@ -194,7 +218,7 @@ lista.addEventListener("click", function (e) {
 
 //Esta es una funcion asincrona que nos trae las imagenes neceserias para la seccion trending
 (function() {
-    let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=20`;
+    let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=24`;
     fetch(url)
     .then( response => response.json()) //.json es tmb una funcion asincrona que resp con promesa
     .then(content => {
@@ -211,6 +235,7 @@ lista.addEventListener("click", function (e) {
             rObj.url = obj.images.downsized.url
             return rObj;
             });
+        localStorage.setItem('copiaContent', JSON.stringify(copiaContent));
         firstTrending.setAttribute("src", content.data[0].images.downsized.url);
         secondTrending.setAttribute("src", content.data[1].images.downsized.url);
         thirdTrending.setAttribute("src", content.data[2].images.downsized.url);
@@ -231,6 +256,10 @@ lista.addEventListener("click", function (e) {
         Image18.setAttribute("src", content.data[17].images.downsized.url)
         Image19.setAttribute("src", content.data[18].images.downsized.url)
         Image20.setAttribute("src", content.data[19].images.downsized.url)
+        Image21.setAttribute("src", content.data[20].images.downsized.url)
+        Image22.setAttribute("src", content.data[21].images.downsized.url)
+        Image23.setAttribute("src", content.data[22].images.downsized.url)
+        Image24.setAttribute("src", content.data[23].images.downsized.url)
     })
     .catch(err => {
         console.log(err);
@@ -259,6 +288,10 @@ let Image17 = document.getElementById("Trending17");
 let Image18 = document.getElementById("Trending18");
 let Image19 = document.getElementById("Trending19");
 let Image20 = document.getElementById("Trending20");
+let Image21 = document.getElementById("Trending21");
+let Image22 = document.getElementById("Trending22");
+let Image23 = document.getElementById("Trending23");
+let Image24 = document.getElementById("Trending24");
 let capaOpaca = document.createElement("div");//Es un div que se agrega dinamicamente sobre las imagenes a modo hover
 let username = document.createElement("p");//Será un hijo de capaOpaca que contendra el username del GIF
 let title = document.createElement("p");//Será un hijo de capaOpaca que contendra el title del GIF
@@ -322,9 +355,11 @@ firstImage.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id="expandFirstTrendingImg">`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandFirstTrendingImg = document.getElementById("expandFirstTrendingImg");
+    expandFirstTrendingImg.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=trendingFunction');
 });
 
 //Funcion que elimina la capaOpaca cuando uno deja de posicionarse sobre un GIF
@@ -490,7 +525,7 @@ rightSlider.addEventListener('click', () => {
     let firstSrc = "";
     let secondSrc = "";
     let thirdSrc = "";
-    if(indice === 19){
+    if(indice === 23){
         console.log("otro aqui");
         // secondTrending.setAttribute("src", copiaContent[0].url);
         // thirdTrending.setAttribute("src", copiaContent[1].url);
@@ -527,7 +562,7 @@ leftSlider.addEventListener('click', () => {
         firstSrc = firstTrending.getAttribute("src");
         thirdTrending.setAttribute("src", secondSrc);
         secondTrending.setAttribute("src", firstSrc);
-        firstTrending.setAttribute("src", copiaContent[19].url);
+        firstTrending.setAttribute("src", copiaContent[23].url);
     }
     else {
         // firstTrending.setAttribute("src", copiaContent[indice+1].url);
@@ -581,9 +616,11 @@ imgFound2.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound2'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound2 = document.getElementById("expandImgFound2");
+    expandImgFound2.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound3.addEventListener("mouseenter", (e) => {
@@ -602,9 +639,11 @@ imgFound3.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound3'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound3 = document.getElementById("expandImgFound3");
+    expandImgFound3.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound4.addEventListener("mouseenter", (e) => {
@@ -623,9 +662,11 @@ imgFound4.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound4'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound4 = document.getElementById("expandImgFound4");
+    expandImgFound4.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound5.addEventListener("mouseenter", (e) => {
@@ -644,9 +685,11 @@ imgFound5.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound5'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound5 = document.getElementById("expandImgFound5");
+    expandImgFound5.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound6.addEventListener("mouseenter", (e) => {
@@ -665,9 +708,11 @@ imgFound6.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound6'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound6 = document.getElementById("expandImgFound6");
+    expandImgFound6.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound7.addEventListener("mouseenter", (e) => {
@@ -686,9 +731,11 @@ imgFound7.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound7'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound7 = document.getElementById("expandImgFound7");
+    expandImgFound7.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound8.addEventListener("mouseenter", (e) => {
@@ -707,9 +754,11 @@ imgFound8.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound8'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound8 = document.getElementById("expandImgFound8");
+    expandImgFound8.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound9.addEventListener("mouseenter", (e) => {
@@ -728,9 +777,11 @@ imgFound9.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound9'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound9 = document.getElementById("expandImgFound9");
+    expandImgFound9.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound10.addEventListener("mouseenter", (e) => {
@@ -749,9 +800,11 @@ imgFound10.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound10'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound10 = document.getElementById("expandImgFound10");
+    expandImgFound10.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound11.addEventListener("mouseenter", (e) => {
@@ -770,9 +823,11 @@ imgFound11.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound11'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound11 = document.getElementById("expandImgFound11");
+    expandImgFound11.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound12.addEventListener("mouseenter", (e) => {
@@ -791,9 +846,11 @@ imgFound12.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound12'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound12 = document.getElementById("expandImgFound12");
+    expandImgFound12.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound13.addEventListener("mouseenter", (e) => {
@@ -812,9 +869,11 @@ imgFound13.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound13'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound13 = document.getElementById("expandImgFound13");
+    expandImgFound13.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound14.addEventListener("mouseenter", (e) => {
@@ -833,9 +892,11 @@ imgFound14.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound14'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound14 = document.getElementById("expandImgFound14");
+    expandImgFound14.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound15.addEventListener("mouseenter", (e) => {
@@ -854,9 +915,11 @@ imgFound15.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound15'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound15 = document.getElementById("expandImgFound15");
+    expandImgFound15.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound16.addEventListener("mouseenter", (e) => {
@@ -875,9 +938,11 @@ imgFound16.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound16'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound16 = document.getElementById("expandImgFound16");
+    expandImgFound16.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound17.addEventListener("mouseenter", (e) => {
@@ -896,9 +961,11 @@ imgFound17.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound17'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound17 = document.getElementById("expandImgFound17");
+    expandImgFound17.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 
@@ -918,9 +985,11 @@ imgFound18.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound18'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound18 = document.getElementById("expandImgFound18");
+    expandImgFound18.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound19.addEventListener("mouseenter", (e) => {
@@ -939,9 +1008,11 @@ imgFound19.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound19'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound19 = document.getElementById("expandImgFound19");
+    expandImgFound19.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound20.addEventListener("mouseenter", (e) => {
@@ -960,9 +1031,11 @@ imgFound20.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound20'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound20 = document.getElementById("expandImgFound20");
+    expandImgFound20.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound21.addEventListener("mouseenter", (e) => {
@@ -981,9 +1054,11 @@ imgFound21.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound21'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound21 = document.getElementById("expandImgFound21");
+    expandImgFound21.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound22.addEventListener("mouseenter", (e) => {
@@ -1002,9 +1077,11 @@ imgFound22.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound22'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound22 = document.getElementById("expandImgFound22");
+    expandImgFound22.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound23.addEventListener("mouseenter", (e) => {
@@ -1023,9 +1100,11 @@ imgFound23.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound23'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound23 = document.getElementById("expandImgFound23");
+    expandImgFound23.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound24.addEventListener("mouseenter", (e) => {
@@ -1044,9 +1123,11 @@ imgFound24.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound24'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound24 = document.getElementById("expandImgFound24");
+    expandImgFound24.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 
