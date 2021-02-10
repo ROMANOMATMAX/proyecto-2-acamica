@@ -1,3 +1,5 @@
+
+let expandImgFound1;
 let copiaContent1;
 let buscadaOn = document.getElementById("lupa");
 let inputText = document.getElementById("buscador-palabra");
@@ -8,6 +10,10 @@ let url_string = window.location.href;
 let verMasBtn = document.getElementById("verMasBtn");
 console.log(url_string);
 let url = new URL(url_string);
+let galeriaImagenes = document.querySelector('.galeria-imagenes');
+let contenedorBtn = document.querySelector('.contenedor-button');
+let seccionUnoAlt = document.querySelector('.seccion-1-alt');
+let seccionUno = document.querySelector('.seccion-1');
 //KEY PARA REALIZAR LA BUSQUEDA - PASADA COMO PARAMETRO EN LA URL
 let lookingFor = getParameterByName("lookingFor");
 var passedModoNocturno = getParameterByName("modoNocturnoOn");
@@ -88,6 +94,10 @@ let APIKEY = "QyOxncNKEan7B4abTimnsBt6bl87ZloY";
     })
     .catch(err => {
         console.log(err);
+        galeriaImagenes.innerHTML = '<div class="sin-resultado"><img src="./assets/icon-busqueda-sin-resultado.svg"></img><p>Intenta con otra búsqueda<p></div>';
+        contenedorBtn.style.display ="none";
+        seccionUnoAlt.style.marginBottom = "0";
+        seccionUno.style.marginBottom = "0";
     })
 }());
 
@@ -545,9 +555,11 @@ imgFound1.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound1'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound1 = document.getElementById("expandImgFound1");
+    expandImgFound1.addEventListener("click", ()=>window.document.location = '../gif-max.html')
 });
 
 imgFound2.addEventListener("mouseenter", (e) => {
@@ -1045,3 +1057,5 @@ function getParameterByName(name) {
 let palabraBuscada = document.getElementById("palabraBuscada");
 
 palabraBuscada.textContent = lookingFor;
+
+// let expandImgFound1 = document.getElementById("expandImgFound1")
