@@ -1,7 +1,7 @@
 .sliderGifMax {
     display: grid;
     grid-template-columns: 10% 80% 10%;
-    grid-template-rows: 50px 385px 50px;
+    grid-template-rows: 1fr 4fr 1fr;;
     padding: 50px 10%;
     div.close {
         grid-column: 3/4;

@@ -15,6 +15,7 @@ var lista = document.getElementById("sugerencias");
 var elementosSugeridos = document.getElementsByClassName("item-sugerido");
 
 let modoNocturnoOn = false;
+localStorage.setItem("modoNocturnoOn", modoNocturnoOn);
 
 ///como detectar un cambio en un checkbox
 var btnNocturneMode = document.getElementById("boton-menu");
@@ -48,6 +49,7 @@ botonNocturno.addEventListener("click", function() {
     if(menuHamburguesa.getAttribute("src") === "./assets/close.svg") {
         console.log("a nocturno");
         modoNocturnoOn = false;
+        localStorage.setItem("modoNocturnoOn", modoNocturnoOn);
         leftSlider.setAttribute("src", "./assets/button-slider-left.svg");
         rightSlider.setAttribute("src", "./assets/button-slider-right.svg");
         menuHamburguesa.setAttribute("src", "./assets/close-modo-noct.svg");    
@@ -56,6 +58,7 @@ botonNocturno.addEventListener("click", function() {
     else {
         console.log("a diurno");
         modoNocturnoOn = true;
+        localStorage.setItem("modoNocturnoOn", modoNocturnoOn);
         leftSlider.setAttribute("src", "./assets/button-slider-left-md-noct.svg");
         rightSlider.setAttribute("src", "./assets/button-slider-right-md-noct.svg");
         menuHamburguesa.setAttribute("src", "./assets/close.svg");
@@ -104,7 +107,7 @@ lista.addEventListener("click", function (e) {
 //EventListener del click en la lupa
 buscadaOn.addEventListener("change", function () {
     console.log("Hola niños2");
-    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value + '&modoNocturnoOn=' + modoNocturnoOn;
+    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value;
 });
 
 

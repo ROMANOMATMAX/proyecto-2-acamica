@@ -16,9 +16,9 @@ let seccionUnoAlt = document.querySelector('.seccion-1-alt');
 let seccionUno = document.querySelector('.seccion-1');
 //KEY PARA REALIZAR LA BUSQUEDA - PASADA COMO PARAMETRO EN LA URL
 let lookingFor = getParameterByName("lookingFor");
-var passedModoNocturno = getParameterByName("modoNocturnoOn");
+var modoNocturnoOn = localStorage.getItem("modoNocturnoOn");
 console.log("hola soy modoNocturnoOn");
-console.log(passedModoNocturno);
+// console.log(passedModoNocturno);
 console.log(lookingFor);
 const imgFound1 = document.getElementById("imgFound1");
 const imgFound2 = document.getElementById("imgFound2");
@@ -67,6 +67,7 @@ let APIKEY = "QyOxncNKEan7B4abTimnsBt6bl87ZloY";
             rObj.url = obj.images.downsized.url
             return rObj;
             });
+            localStorage.setItem('copiaContent1', JSON.stringify(copiaContent1));
             imgFound1.setAttribute("src", content.data[0].images.downsized.url);
             imgFound2.setAttribute("src", content.data[1].images.downsized.url);
             imgFound3.setAttribute("src", content.data[2].images.downsized.url);
@@ -334,11 +335,11 @@ capaOpaca.addEventListener("mouseleave", (e) => {
 });
 
 //variable que identifica en que modo esta la page, passedModoNocturno es pasado por parametro y se lo asignamos a modoNocturnoOn pa no modificar las otras funciones
-let modoNocturnoOn = passedModoNocturno;
+// let modoNocturnoOn = passedModoNocturno;
 //funcion que hace el hover al boton left del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 leftSlider.addEventListener("mouseenter", (e) => {
     console.log("entrar");
-    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="" || modoNocturnoOn ===null || modoNocturnoOn === false) {
         e.target.setAttribute("src", "./assets/button-slider-left-hover.svg");
     }
     else {
@@ -350,7 +351,7 @@ leftSlider.addEventListener("mouseenter", (e) => {
 //funcion que hace el hover al boton left del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 leftSlider.addEventListener("mouseleave", (e) => {
     console.log("sali");
-    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="" || modoNocturnoOn ===null || modoNocturnoOn === false) {
         e.target.setAttribute("src", "./assets/button-slider-left.svg");
     }
     else{
@@ -362,7 +363,7 @@ leftSlider.addEventListener("mouseleave", (e) => {
 //funcion que hace el hover al boton right del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 rightSlider.addEventListener("mouseenter", (e) => {
     console.log("entrar");
-    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="" || modoNocturnoOn ===null || modoNocturnoOn === false) {
         e.target.setAttribute("src", "./assets/button-slider-right-hover.svg");
     }
     else {
@@ -374,7 +375,7 @@ rightSlider.addEventListener("mouseenter", (e) => {
 //funcion que hace el hover al boton right del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 rightSlider.addEventListener("mouseleave", (e) => {
     console.log("sali");
-    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="" || modoNocturnoOn ===null  || modoNocturnoOn === false) {
         e.target.setAttribute("src", "./assets/button-slider-right.svg");
     }
     else{
@@ -420,7 +421,8 @@ botonNocturno.addEventListener("click", function() {
     document.body.classList.toggle("dark");
     if(menuHamburguesa.getAttribute("src") === "./assets/close.svg") {
         console.log("a nocturno");
-        modoNocturnoOn = false;
+        modoNocturnoOn = "false";
+        localStorage.setItem("modoNocturnoOn", modoNocturnoOn);
         leftSlider.setAttribute("src", "./assets/button-slider-left.svg");
         rightSlider.setAttribute("src", "./assets/button-slider-right.svg");
         menuHamburguesa.setAttribute("src", "./assets/close-modo-noct.svg");    
@@ -428,7 +430,8 @@ botonNocturno.addEventListener("click", function() {
     }
     else {
         console.log("a diurno");
-        modoNocturnoOn = true;
+        modoNocturnoOn = "true";
+        localStorage.setItem("modoNocturnoOn", modoNocturnoOn);
         leftSlider.setAttribute("src", "./assets/button-slider-left-md-noct.svg");
         rightSlider.setAttribute("src", "./assets/button-slider-right-md-noct.svg");
         menuHamburguesa.setAttribute("src", "./assets/close.svg");
@@ -455,13 +458,13 @@ botonNocturno.addEventListener("click", function() {
 
 (function() {
     console.log("entre a la funcion autoinvocada");
-    console.log(passedModoNocturno);
-    if(passedModoNocturno === "true") {
+    console.log(modoNocturnoOn);
+    if(modoNocturnoOn === "true") {
         console.log("el valor de passedModoNocturno era true");
         document.body.classList.toggle("dark");
         if(menuHamburguesa.getAttribute("src") === "./assets/close.svg") {
             console.log("a nocturno");
-            modoNocturnoOn = false;
+            modoNocturnoOn = "false";
             leftSlider.setAttribute("src", "./assets/button-slider-left.svg");
             rightSlider.setAttribute("src", "./assets/button-slider-right.svg");
             menuHamburguesa.setAttribute("src", "./assets/close-modo-noct.svg");    
@@ -469,7 +472,7 @@ botonNocturno.addEventListener("click", function() {
         }
         else {
             console.log("a diurno");
-            modoNocturnoOn = true;
+            modoNocturnoOn = "true";
             leftSlider.setAttribute("src", "./assets/button-slider-left-md-noct.svg");
             rightSlider.setAttribute("src", "./assets/button-slider-right-md-noct.svg");
             menuHamburguesa.setAttribute("src", "./assets/close.svg");
@@ -559,7 +562,7 @@ imgFound1.addEventListener("mouseenter", (e) => {
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
     expandImgFound1 = document.getElementById("expandImgFound1");
-    expandImgFound1.addEventListener("click", ()=>window.document.location = '../gif-max.html')
+    expandImgFound1.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
 });
 
 imgFound2.addEventListener("mouseenter", (e) => {
