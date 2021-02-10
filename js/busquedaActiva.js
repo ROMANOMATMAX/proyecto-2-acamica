@@ -24,6 +24,8 @@ let expandImgFound22;
 let expandImgFound23;
 let expandImgFound24;
 let expandFirstTrendingImg;
+let expandSecondTrendingImg;
+let expandThirdTrendingImg;
 let copiaContent1;
 let buscadaOn = document.getElementById("lupa");
 let inputText = document.getElementById("buscador-palabra");
@@ -315,9 +317,11 @@ thirdImage.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id='expandThirdTrendingImg'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);    
+    expandThirdTrendingImg = document.getElementById("expandThirdTrendingImg");
+    expandThirdTrendingImg.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=trendingFunction');
 });
 
 
@@ -336,9 +340,11 @@ secondImage.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(title);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
+    <img src='./assets/icon-max-normal.svg' id='expandSecondTrendingImg'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
+    expandSecondTrendingImg = document.getElementById("expandSecondTrendingImg");
+    expandSecondTrendingImg.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=trendingFunction');
 });
 
 firstImage.addEventListener("mouseenter", (e) => {
