@@ -104,7 +104,7 @@ lista.addEventListener("click", function (e) {
 //EventListener del click en la lupa
 buscadaOn.addEventListener("change", function () {
     console.log("Hola niños2");
-    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value + '?modoNocturnoOn=' + modoNocturnoOn;
+    window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value + '&modoNocturnoOn=' + modoNocturnoOn;
 });
 
 
@@ -122,47 +122,59 @@ function getIndexUrl(currentSrc) {
 
 rightSlider.addEventListener('click', () => {
     console.log("right-slide");
-    let indice = getIndexUrl(firstTrending.getAttribute("src"));
+    let indice = getIndexUrl(thirdTrending.getAttribute("src"));
     console.log(indice);
     let firstSrc = "";
     let secondSrc = "";
-    if(indice === 0){
+    let thirdSrc = "";
+    if(indice === 19){
         console.log("otro aqui");
-        secondTrending.setAttribute("src", copiaContent[0].url);
-        thirdTrending.setAttribute("src", copiaContent[1].url);
-        firstTrending.setAttribute("src", copiaContent[19].url);
+        // secondTrending.setAttribute("src", copiaContent[0].url);
+        // thirdTrending.setAttribute("src", copiaContent[1].url);
+        firstSrc = firstTrending.getAttribute("src")
+        secondSrc = secondTrending.getAttribute("src");
+        thirdSrc = thirdTrending.getAttribute("src");
+        firstTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", thirdSrc);
+        thirdTrending.setAttribute("src", copiaContent[0].url);
     }
     else {
         // firstTrending.setAttribute("src", copiaContent[indice+1].url);
         console.log("entre aquiiiii");
         firstSrc = firstTrending.getAttribute("src")
         secondSrc = secondTrending.getAttribute("src");
-        secondTrending.setAttribute("src", firstSrc);
-        thirdTrending.setAttribute("src", secondSrc);
-        firstTrending.setAttribute("src", copiaContent[indice-1].url);
+        thirdSrc = thirdTrending.getAttribute("src");
+        firstTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", thirdSrc);
+        thirdTrending.setAttribute("src", copiaContent[indice+1].url);
     }
 });
 
 leftSlider.addEventListener('click', () => {
     console.log("left-slide");
-    let indice = getIndexUrl(thirdTrending.getAttribute("src"));
+    let indice = getIndexUrl(firstTrending.getAttribute("src"));
     console.log(indice);
     let firstSrc = "";
     let secondSrc = "";
-    if(indice === copiaContent.length -1){
+    let thirdSrc = "";
+    if(indice === 0){
         console.log("otro aqui");
-        secondTrending.setAttribute("src", copiaContent[19].url);
-        thirdTrending.setAttribute("src", copiaContent[0].url);
-        firstTrending.setAttribute("src", copiaContent[18].url);
+        secondSrc = secondTrending.getAttribute("src");
+        thirdSrc = thirdTrending.getAttribute("src");
+        firstSrc = firstTrending.getAttribute("src");
+        thirdTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", firstSrc);
+        firstTrending.setAttribute("src", copiaContent[19].url);
     }
     else {
         // firstTrending.setAttribute("src", copiaContent[indice+1].url);
         console.log("entre aquiiiii");
         secondSrc = secondTrending.getAttribute("src");
         thirdSrc = thirdTrending.getAttribute("src");
-        firstTrending.setAttribute("src", secondSrc);
-        secondTrending.setAttribute("src", thirdSrc);
-        thirdTrending.setAttribute("src", copiaContent[indice+1].url);
+        firstSrc = firstTrending.getAttribute("src");
+        thirdTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", firstSrc);
+        firstTrending.setAttribute("src", copiaContent[indice-1].url);
     }
 });
 
@@ -193,6 +205,23 @@ let copiaContent =[];
         firstTrending.setAttribute("src", content.data[0].images.downsized.url);
         secondTrending.setAttribute("src", content.data[1].images.downsized.url);
         thirdTrending.setAttribute("src", content.data[2].images.downsized.url);
+        Image4.setAttribute("src", content.data[3].images.downsized.url)
+        Image5.setAttribute("src", content.data[4].images.downsized.url)
+        Image6.setAttribute("src", content.data[5].images.downsized.url)
+        Image7.setAttribute("src", content.data[6].images.downsized.url)
+        Image8.setAttribute("src", content.data[7].images.downsized.url)
+        Image9.setAttribute("src", content.data[8].images.downsized.url)
+        Image10.setAttribute("src", content.data[9].images.downsized.url)
+        Image11.setAttribute("src", content.data[10].images.downsized.url)
+        Image12.setAttribute("src", content.data[11].images.downsized.url)
+        Image13.setAttribute("src", content.data[12].images.downsized.url)
+        Image14.setAttribute("src", content.data[13].images.downsized.url)
+        Image15.setAttribute("src", content.data[14].images.downsized.url)
+        Image16.setAttribute("src", content.data[15].images.downsized.url)
+        Image17.setAttribute("src", content.data[16].images.downsized.url)
+        Image18.setAttribute("src", content.data[17].images.downsized.url)
+        Image19.setAttribute("src", content.data[18].images.downsized.url)
+        Image20.setAttribute("src", content.data[19].images.downsized.url)
         // console.log(content.data);
         // console.log(content.meta);
         // let fig = document.createElement('figure');
@@ -216,6 +245,23 @@ let slider = document.querySelector(".slider");
 let thirdImage = document.getElementById("thirdTrending");
 let secondImage = document.getElementById("secondTrending");
 let firstImage = document.getElementById("firstTrending");
+let Image4 = document.getElementById("Trending4");
+let Image5 = document.getElementById("Trending5");
+let Image6 = document.getElementById("Trending6");
+let Image7 = document.getElementById("Trending7");
+let Image8 = document.getElementById("Trending8");
+let Image9 = document.getElementById("Trending9");
+let Image10 = document.getElementById("Trending10");
+let Image11 = document.getElementById("Trending11");
+let Image12 = document.getElementById("Trending12");
+let Image13 = document.getElementById("Trending13");
+let Image14 = document.getElementById("Trending14");
+let Image15 = document.getElementById("Trending15");
+let Image16 = document.getElementById("Trending16");
+let Image17 = document.getElementById("Trending17");
+let Image18 = document.getElementById("Trending18");
+let Image19 = document.getElementById("Trending19");
+let Image20 = document.getElementById("Trending20");
 let capaOpaca = document.createElement("div");
 let username = document.createElement("p");
 let title = document.createElement("p");

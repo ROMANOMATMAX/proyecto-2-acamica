@@ -1,15 +1,3 @@
-// let url_string = window.location.href;
-// console.log(url_string);
-// let url = new URL(url_string);
-// let lookingFor = url.searchParams.get("lookingFor");
-// console.log(lookingFor);
-
-// let APIKEY = "QyOxncNKEan7B4abTimnsBt6bl87ZloY";
-
-
-
-            // document.getElementById("btnSearch").addEventListener"click", ev => 
-            //     ev.preventDefault();
 let copiaContent1;
 let buscadaOn = document.getElementById("lupa");
 let inputText = document.getElementById("buscador-palabra");
@@ -20,6 +8,7 @@ let url_string = window.location.href;
 let verMasBtn = document.getElementById("verMasBtn");
 console.log(url_string);
 let url = new URL(url_string);
+//KEY PARA REALIZAR LA BUSQUEDA - PASADA COMO PARAMETRO EN LA URL
 let lookingFor = getParameterByName("lookingFor");
 var passedModoNocturno = getParameterByName("modoNocturnoOn");
 console.log("hola soy modoNocturnoOn");
@@ -37,8 +26,22 @@ const imgFound9 = document.getElementById("imgFound9");
 const imgFound10 = document.getElementById("imgFound10");
 const imgFound11 = document.getElementById("imgFound11");
 const imgFound12 = document.getElementById("imgFound12");
+const imgFound13 = document.getElementById("imgFound13");
+const imgFound14 = document.getElementById("imgFound14");
+const imgFound15 = document.getElementById("imgFound15");
+const imgFound16 = document.getElementById("imgFound16");
+const imgFound17 = document.getElementById("imgFound17");
+const imgFound18 = document.getElementById("imgFound18");
+const imgFound19 = document.getElementById("imgFound19");
+const imgFound20 = document.getElementById("imgFound20");
+const imgFound21 = document.getElementById("imgFound21");
+const imgFound22 = document.getElementById("imgFound22");
+const imgFound23 = document.getElementById("imgFound23");
+const imgFound24 = document.getElementById("imgFound24");
 let APIKEY = "QyOxncNKEan7B4abTimnsBt6bl87ZloY";
 
+
+//FUNCION ASINCRONA AUTOINVOCADA PARA REALIZAR LA BUSQUEDA DESEADA
 (function() {
     let urlForApi = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=24&q=`
     urlForApi = urlForApi.concat(lookingFor);
@@ -70,21 +73,25 @@ let APIKEY = "QyOxncNKEan7B4abTimnsBt6bl87ZloY";
             imgFound10.setAttribute("src", content.data[9].images.downsized.url);
             imgFound11.setAttribute("src", content.data[10].images.downsized.url);
             imgFound12.setAttribute("src", content.data[11].images.downsized.url);
-        // let fig = document.createElement('figure');
-        // let img = document.createElement('img');
-        // let fc = document.createElement('figcaption');
-        // img.src = content.data[0].images.downsized.url;
-        // img.alt = content.data[0].title;
-        // fc.textContent = content.data[0].title;
-        // fig.appendChild(img);
-        // fig.appendChild(fc);
-        // let out = document.querySelector(".out");
-        // out.insertAdjacentElement('afterbegin', fig);
+            imgFound13.setAttribute("src", content.data[12].images.downsized.url);
+            imgFound14.setAttribute("src", content.data[13].images.downsized.url);
+            imgFound15.setAttribute("src", content.data[14].images.downsized.url);
+            imgFound16.setAttribute("src", content.data[15].images.downsized.url);
+            imgFound17.setAttribute("src", content.data[16].images.downsized.url);
+            imgFound18.setAttribute("src", content.data[17].images.downsized.url);
+            imgFound19.setAttribute("src", content.data[18].images.downsized.url);
+            imgFound20.setAttribute("src", content.data[19].images.downsized.url);
+            imgFound21.setAttribute("src", content.data[20].images.downsized.url);
+            imgFound22.setAttribute("src", content.data[21].images.downsized.url);
+            imgFound23.setAttribute("src", content.data[22].images.downsized.url);
+            imgFound24.setAttribute("src", content.data[23].images.downsized.url);
     })
     .catch(err => {
         console.log(err);
     })
 }());
+
+//FUNCION PARA ENCONTRAR DENTRO DEL ARRAY DE OBJETO EL INDICE QUE OCUPA DE ACUERDO comparando src, sirve para slider
 function getIndexUrl(currentSrc, copiaContent) {
     for(let i= 0; i<copiaContent.length; i++) {
         if(copiaContent[i].url=== currentSrc) {    
@@ -93,64 +100,49 @@ function getIndexUrl(currentSrc, copiaContent) {
     }
 }
 
+//FUNCION PARA EL BOTON VER MAS, SLIDER HACIA ABAJO - aqui usamos la funcion getIndexUrl(currentSrc, copiaContent)
 verMasBtn.addEventListener('click', () => {
-    console.log("right-slide");
-    let indice = getIndexUrl(imgFound1.getAttribute("src"), copiaContent1);
-    console.log(indice);
-    let src1 = "";
-    let src2 = "";
-    let src3 = "";
-    let src4 = "";
-    let src5 = "";
-    let src6 = "";
-    let src7 = "";
-    let src8 = "";
-    // let src9 = "";
-    // let src10 = "";
-    // let src11 = "";
-    // let src12 = "";
-    if(indice === 0){
-        console.log("otro aqui");
-        imgFound1.setAttribute("src", copiaContent1[20].url);
-        imgFound2.setAttribute("src", copiaContent1[21].url);
-        imgFound3.setAttribute("src", copiaContent1[22].url);
-        imgFound4.setAttribute("src", copiaContent1[23].url);
+    console.log("presionaste ver mas");
+    if(verMasBtn.textContent === "VER MÁS") {
+        imgFound13.parentNode.style.display = "block";
+        imgFound14.parentNode.style.display = "block";
+        imgFound15.parentNode.style.display = "block";
+        imgFound16.parentNode.style.display = "block";
+        imgFound17.parentNode.style.display = "block";
+        imgFound18.parentNode.style.display = "block";
+        imgFound19.parentNode.style.display = "block";
+        imgFound20.parentNode.style.display = "block";
+        imgFound21.parentNode.style.display = "block";
+        imgFound22.parentNode.style.display = "block";
+        imgFound23.parentNode.style.display = "block";
+        imgFound24.parentNode.style.display = "block";    
+        verMasBtn.textContent = "VER MENOS";
     }
     else {
-        // firstTrending.setAttribute("src", copiaContent[indice+1].url);
-        console.log("entre aquiiiii");
-        src1 = imgFound1.getAttribute("src");
-        src2 = imgFound2.getAttribute("src");
-        src3 = imgFound3.getAttribute("src");
-        src4 = imgFound4.getAttribute("src");
-        src5 = imgFound5.getAttribute("src");
-        src6 = imgFound6.getAttribute("src");
-        src7 = imgFound7.getAttribute("src");
-        src8 = imgFound8.getAttribute("src");
-        // src9 = imgFound9.getAttribute("src");
-        // src10 = imgFound10.getAttribute("src");
-        // src11 = imgFound11.getAttribute("src");
-        // src12 = imgFound12.getAttribute("src");
-        imgFound5.setAttribute("src", src1);
-        imgFound6.setAttribute("src", src2);
-        imgFound7.setAttribute("src", src3);
-        imgFound8.setAttribute("src", src4);
-        imgFound9.setAttribute("src", src5);
-        imgFound10.setAttribute("src", src6);
-        imgFound11.setAttribute("src", src7);
-        imgFound12.setAttribute("src", src8);
-        imgFound1.setAttribute("src", copiaContent1[indice-4].url);
-        imgFound2.setAttribute("src", copiaContent1[indice-3].url);
-        imgFound3.setAttribute("src", copiaContent1[indice-2].url);
-        imgFound4.setAttribute("src", copiaContent1[indice-1].url);
+        imgFound13.parentNode.style.display = "none";
+        imgFound14.parentNode.style.display = "none";
+        imgFound15.parentNode.style.display = "none";
+        imgFound16.parentNode.style.display = "none";
+        imgFound17.parentNode.style.display = "none";
+        imgFound18.parentNode.style.display = "none";
+        imgFound19.parentNode.style.display = "none";
+        imgFound20.parentNode.style.display = "none";
+        imgFound21.parentNode.style.display = "none";
+        imgFound22.parentNode.style.display = "none";
+        imgFound23.parentNode.style.display = "none";
+        imgFound24.parentNode.style.display = "none";
+        verMasBtn.textContent = "VER MÁS";
     }
 });
 
+//Esta funcion nos permite que al hacer click en la lupa con la intención de realizar una nueva busqueda se recargue la pagina con la key necesaria
 buscadaOn.addEventListener("change", function () {
     console.log("Hola niños2");
     window.document.location = '../busqueda-activa.html' + '?lookingFor=' + inputText.value;
 });
 
+
+//Esta funcion es asincrona y nos permite obtener sugerencias para la busqueda que hace el usuario
 inputText.addEventListener("keyup", function () {
     console.log("Hola niños");
     var a_buscar = inputText.value;
@@ -180,7 +172,8 @@ inputText.addEventListener("keyup", function () {
         console.log(err);
     })
 });
-       
+
+//Esta funcion nos permite que cada vez que se haga click sobre alguna sugerencia de la lista esta se coloque como value del inputText
 lista.addEventListener("click", function (e) {
     console.log(e.target);
     console.log(e.target.textContent);
@@ -188,6 +181,7 @@ lista.addEventListener("click", function (e) {
 });  
 
 
+//Esta es una funcion asincrona que nos trae las imagenes neceserias para la seccion trending
 (function() {
     let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=20`;
     fetch(url)
@@ -209,18 +203,23 @@ lista.addEventListener("click", function (e) {
         firstTrending.setAttribute("src", content.data[0].images.downsized.url);
         secondTrending.setAttribute("src", content.data[1].images.downsized.url);
         thirdTrending.setAttribute("src", content.data[2].images.downsized.url);
-        // console.log(content.data);
-        // console.log(content.meta);
-        // let fig = document.createElement('figure');
-        // let img = document.createElement('img');
-        // let fc = document.createElement('figcaption');
-        // img.src = content.data[0].images.downsized.url;
-        // img.alt = content.data[0].title;
-        // fc.textContent = content.data[0].title;
-        // fig.appendChild(img);
-        // fig.appendChild(fc);
-        // let out = document.querySelector(".out");
-        // out.insertAdjacentElement('afterbegin', fig);
+        Image4.setAttribute("src", content.data[3].images.downsized.url)
+        Image5.setAttribute("src", content.data[4].images.downsized.url)
+        Image6.setAttribute("src", content.data[5].images.downsized.url)
+        Image7.setAttribute("src", content.data[6].images.downsized.url)
+        Image8.setAttribute("src", content.data[7].images.downsized.url)
+        Image9.setAttribute("src", content.data[8].images.downsized.url)
+        Image10.setAttribute("src", content.data[9].images.downsized.url)
+        Image11.setAttribute("src", content.data[10].images.downsized.url)
+        Image12.setAttribute("src", content.data[11].images.downsized.url)
+        Image13.setAttribute("src", content.data[12].images.downsized.url)
+        Image14.setAttribute("src", content.data[13].images.downsized.url)
+        Image15.setAttribute("src", content.data[14].images.downsized.url)
+        Image16.setAttribute("src", content.data[15].images.downsized.url)
+        Image17.setAttribute("src", content.data[16].images.downsized.url)
+        Image18.setAttribute("src", content.data[17].images.downsized.url)
+        Image19.setAttribute("src", content.data[18].images.downsized.url)
+        Image20.setAttribute("src", content.data[19].images.downsized.url)
     })
     .catch(err => {
         console.log(err);
@@ -228,169 +227,108 @@ lista.addEventListener("click", function (e) {
 }());
 
 //Hover de la seccion trending
-let slider = document.querySelector(".slider");
-let thirdImage = document.getElementById("thirdTrending");
-let secondImage = document.getElementById("secondTrending");
-let firstImage = document.getElementById("firstTrending");
-let capaOpaca = document.createElement("div");
-let username = document.createElement("p");
-let title = document.createElement("p");
-let containerThreeBtns = document.createElement("div");
-let rightSlider = document.getElementById("right-slider");
-let leftSlider = document.getElementById("left-slider");
+let slider = document.querySelector(".slider");//selecciona todo el slider container
+let thirdImage = document.getElementById("thirdTrending");//hace referencia a la tercer imagen de la seccion trending
+let secondImage = document.getElementById("secondTrending");//hace referencia a la segunda imagen de la seccion trending
+let firstImage = document.getElementById("firstTrending");//hace referencia a la primer imagen de la seccion trending
+let Image4 = document.getElementById("Trending4");
+let Image5 = document.getElementById("Trending5");
+let Image6 = document.getElementById("Trending6");
+let Image7 = document.getElementById("Trending7");
+let Image8 = document.getElementById("Trending8");
+let Image9 = document.getElementById("Trending9");
+let Image10 = document.getElementById("Trending10");
+let Image11 = document.getElementById("Trending11");
+let Image12 = document.getElementById("Trending12");
+let Image13 = document.getElementById("Trending13");
+let Image14 = document.getElementById("Trending14");
+let Image15 = document.getElementById("Trending15");
+let Image16 = document.getElementById("Trending16");
+let Image17 = document.getElementById("Trending17");
+let Image18 = document.getElementById("Trending18");
+let Image19 = document.getElementById("Trending19");
+let Image20 = document.getElementById("Trending20");
+let capaOpaca = document.createElement("div");//Es un div que se agrega dinamicamente sobre las imagenes a modo hover
+let username = document.createElement("p");//Será un hijo de capaOpaca que contendra el username del GIF
+let title = document.createElement("p");//Será un hijo de capaOpaca que contendra el title del GIF
+let containerThreeBtns = document.createElement("div");//Es un div tmb hijo de capaOpaca que contiene tres elementos mg, download y expand
+let rightSlider = document.getElementById("right-slider");//selecciona el boton derecho del slider
+let leftSlider = document.getElementById("left-slider");//selecciona el boton izquierdo del slider
 
+
+//Funcion que realiza el hover al posicionarse sobre un GIF de la seccion trending
 thirdImage.addEventListener("mouseenter", (e) => {
-    // e.preventDefault();
     let indiceInterno = getIndexUrl(thirdImage.getAttribute("src"), copiaContent);
     console.log("mouseenterImg3");
     console.log(e.target);
-    // setTimeout(()=> {
     capaOpaca.className = "capaOpaca";
     e.target.parentNode.insertBefore(capaOpaca, e.target);
     username.textContent = copiaContent[indiceInterno].username;
     username.className = "user-name";
     capaOpaca.appendChild(username);
-    // e.target.parentNode.insertBefore(username, capaOpaca);
     title.textContent = copiaContent[indiceInterno].title;
     title.className = "title";
     capaOpaca.appendChild(title);
-    // e.target.parentNode.insertBefore(title, username);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
     <img src='./assets/icon-max-normal.svg'>`;
     containerThreeBtns.className ="container-three-btns";
-    capaOpaca.appendChild(containerThreeBtns);
-    // e.target.parentNode.insertBefore(containerThreeBtns, title);
-    // },500);
-        // let capaOpaca = document.createElement("div");
-        // capaOpaca.className = "capaOpaca";
-        // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    // let capaOpaca = document.createElement("div");
-    // capaOpaca.className = "capaOpaca";
-    // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    
+    capaOpaca.appendChild(containerThreeBtns);    
 });
 
+
+//Funcion que realiza el hover al posicionarse sobre un GIF de la seccion trending
 secondImage.addEventListener("mouseenter", (e) => {
-    // e.preventDefault();
     let indiceInterno = getIndexUrl(secondImage.getAttribute("src"), copiaContent);
     console.log("mouseenterImg3");
     console.log(e.target);
-    // setTimeout(()=> {
     capaOpaca.className = "capaOpaca";
     e.target.parentNode.insertBefore(capaOpaca, e.target);
     username.textContent = copiaContent[indiceInterno].username;
     username.className = "user-name";
     capaOpaca.appendChild(username);
-    // e.target.parentNode.insertBefore(username, capaOpaca);
     title.textContent = copiaContent[indiceInterno].title;
     title.className = "title";
     capaOpaca.appendChild(title);
-    // e.target.parentNode.insertBefore(title, username);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
     <img src='./assets/icon-max-normal.svg'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
-    // },500);
-        // let capaOpaca = document.createElement("div");
-        // capaOpaca.className = "capaOpaca";
-        // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    // let capaOpaca = document.createElement("div");
-    // capaOpaca.className = "capaOpaca";
-    // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    
 });
 
 firstImage.addEventListener("mouseenter", (e) => {
-    // e.preventDefault();
     let indiceInterno = getIndexUrl(firstImage.getAttribute("src"), copiaContent);
     console.log("mouseenterImg3");
     console.log(e.target);
-    // setTimeout(()=> {
     capaOpaca.className = "capaOpaca";
     e.target.parentNode.insertBefore(capaOpaca, e.target);
     username.textContent = copiaContent[indiceInterno].username;
     username.className = "user-name";
     capaOpaca.appendChild(username);
-    // e.target.parentNode.insertBefore(username, capaOpaca);
     title.textContent = copiaContent[indiceInterno].title;
     title.className = "title";
     capaOpaca.appendChild(title);
-    // e.target.parentNode.insertBefore(title, username);
     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
     <img src='./assets/icon-download.svg'>
     <img src='./assets/icon-max-normal.svg'>`;
     containerThreeBtns.className ="container-three-btns";
     capaOpaca.appendChild(containerThreeBtns);
-    // },500);
-        // let capaOpaca = document.createElement("div");
-        // capaOpaca.className = "capaOpaca";
-        // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    // let capaOpaca = document.createElement("div");
-    // capaOpaca.className = "capaOpaca";
-    // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    
 });
 
+//Funcion que elimina la capaOpaca cuando uno deja de posicionarse sobre un GIF
 capaOpaca.addEventListener("mouseleave", (e) => {
-    // e.preventDefault();
     console.log("mouseleave3");
     console.log(e.target.parentNode.getElementsByTagName('div')[0]);    
-    // setTimeout(()=>{
-    e.target.parentNode.removeChild(e.target.parentNode.getElementsByTagName('div')[0]);
-    // }, 500);
-    // console.log(e.target.parentNode);
-    
+    e.target.parentNode.removeChild(e.target.parentNode.getElementsByTagName('div')[0]);    
 });
 
-// secondImage.addEventListener("mouseover", (e) => {
-//     e.preventDefault();
-//     console.log("mouseenterImg2");
-//     // console.log(e.target.parentNode);
-//     let capaOpaca = document.createElement("div");
-//     capaOpaca.className = "capaOpaca";
-//     e.target.parentNode.insertBefore(capaOpaca, e.target);
-//     // let capaOpaca = document.createElement("div");
-//     // capaOpaca.className = "capaOpaca";
-//     // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    
-// });
-
-// secondImage.addEventListener("mouseout", (e) => {
-//     e.preventDefault();
-//     console.log("mouseleave2");
-//     // console.log(e.target.parentNode);
-//     e.target.parentNode.removeChild(e.target.parentNode.firstChild);
-    
-// });
-
-// secondImage.addEventListener("mouseover", (e) => {
-//     console.log("mouseenterImg2");
-//     // console.log(e.target.parentNode); 
-//     let capaOpaca = document.createElement("div");
-//     capaOpaca.className = "capaOpaca";
-//     e.target.parentNode.insertBefore(capaOpaca, e.target);
-//     // let capaOpaca = document.createElement("div");
-//     // capaOpaca.className = "capaOpaca";
-//     // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    
-// });
-
-// secondImage.addEventListener("mouseout", (e) => {
-//     console.log("mouseleave");
-//     console.log(e.target.parentNode);
-//     e.target.parentNode.removeChild(e.target.parentNode.firstChild);
-    
-// });
-
-// let leftSlider = document.getElementById("left-slider");
-// let rightSlider = document.getElementById("right-slider");
-
+//variable que identifica en que modo esta la page, passedModoNocturno es pasado por parametro y se lo asignamos a modoNocturnoOn pa no modificar las otras funciones
+let modoNocturnoOn = passedModoNocturno;
+//funcion que hace el hover al boton left del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 leftSlider.addEventListener("mouseenter", (e) => {
     console.log("entrar");
-    // if(e.target.getAttribute("src") === "./assets/button-slider-left.svg") {
-    if(modoNocturnoOn === false) {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
         e.target.setAttribute("src", "./assets/button-slider-left-hover.svg");
     }
     else {
@@ -399,9 +337,10 @@ leftSlider.addEventListener("mouseenter", (e) => {
     }
 }); 
 
+//funcion que hace el hover al boton left del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 leftSlider.addEventListener("mouseleave", (e) => {
     console.log("sali");
-    if(modoNocturnoOn === false) {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
         e.target.setAttribute("src", "./assets/button-slider-left.svg");
     }
     else{
@@ -410,9 +349,10 @@ leftSlider.addEventListener("mouseleave", (e) => {
     }
 }); 
 
+//funcion que hace el hover al boton right del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 rightSlider.addEventListener("mouseenter", (e) => {
     console.log("entrar");
-    if(modoNocturnoOn === false) {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
         e.target.setAttribute("src", "./assets/button-slider-right-hover.svg");
     }
     else {
@@ -421,9 +361,10 @@ rightSlider.addEventListener("mouseenter", (e) => {
     }
 }); 
 
+//funcion que hace el hover al boton right del slider / en funcion de si se encuentre en modoNocturno o no (notar que a diferencia de main js modo nocturno aqui es string)
 rightSlider.addEventListener("mouseleave", (e) => {
     console.log("sali");
-    if(modoNocturnoOn === false) {
+    if(modoNocturnoOn === "false" || modoNocturnoOn ==="") {
         e.target.setAttribute("src", "./assets/button-slider-right.svg");
     }
     else{
@@ -432,12 +373,13 @@ rightSlider.addEventListener("mouseleave", (e) => {
     }
 }); 
 
-let modoNocturnoOn = passedModoNocturno;
+//Modo Nocturno
+var btnNocturneMode = document.getElementById("boton-menu"); // seleccionamos el checkbox sobre la imagen del menu hamburguesa
 
-///como detectar un cambio en un checkbox
-var btnNocturneMode = document.getElementById("boton-menu");
-btnNocturneMode.addEventListener("change", validacionCheckbox, false);
+//Escuchamos los cambios que ocurren dentro de ese checkbox dentro de esta funcion
+btnNocturneMode.addEventListener("change", validacionCheckbox, false); 
 
+//Es la funcion que se encarga de colocar la imagen del menu hamburguesa o de la cruz segun corresponda y de acuerdo al modo nocturno o diurno
 function validacionCheckbox () {
     var checked = btnNocturneMode.checked;
     if(checked)
@@ -459,8 +401,11 @@ function validacionCheckbox () {
     }
 }
 
+//Selecciona el primer li de la ul del nav menu que es el que nos lleva a modo nocturno o diurno
 var botonNocturno = document.getElementById("a_modoNocturno");
 
+//funcion que al hacer click sobre el li del nav que nos lleva a los 2 modos agrega o quita la clase dark al body
+//ademas tambien lo usamos para cambiar las imagenes que se usa para rightSlider y leftSlider en los 2 modos
 botonNocturno.addEventListener("click", function() {
     document.body.classList.toggle("dark");
     if(menuHamburguesa.getAttribute("src") === "./assets/close.svg") {
@@ -479,9 +424,24 @@ botonNocturno.addEventListener("click", function() {
         menuHamburguesa.setAttribute("src", "./assets/close.svg");
         botonNocturno.textContent = "Modo Nocturno";
     }
-    // document.body.classList.toggle("dark");
 });
 
+
+(function() {
+    imgFound13.parentNode.style.display = "none";
+    imgFound14.parentNode.style.display = "none";
+    imgFound15.parentNode.style.display = "none";
+    imgFound16.parentNode.style.display = "none";
+    imgFound17.parentNode.style.display = "none";
+    imgFound18.parentNode.style.display = "none";
+    imgFound19.parentNode.style.display = "none";
+    imgFound20.parentNode.style.display = "none";
+    imgFound21.parentNode.style.display = "none";
+    imgFound22.parentNode.style.display = "none";
+    imgFound23.parentNode.style.display = "none";
+    imgFound24.parentNode.style.display = "none";
+    verMasBtn.textContent = "VER MÁS";
+}());
 
 (function() {
     console.log("entre a la funcion autoinvocada");
@@ -512,47 +472,59 @@ botonNocturno.addEventListener("click", function() {
 
 rightSlider.addEventListener('click', () => {
     console.log("right-slide");
-    let indice = getIndexUrl(firstTrending.getAttribute("src"), copiaContent);
+    let indice = getIndexUrl(thirdTrending.getAttribute("src"), copiaContent);
     console.log(indice);
     let firstSrc = "";
     let secondSrc = "";
-    if(indice === 0){
+    let thirdSrc = "";
+    if(indice === 19){
         console.log("otro aqui");
-        secondTrending.setAttribute("src", copiaContent[0].url);
-        thirdTrending.setAttribute("src", copiaContent[1].url);
-        firstTrending.setAttribute("src", copiaContent[19].url);
+        // secondTrending.setAttribute("src", copiaContent[0].url);
+        // thirdTrending.setAttribute("src", copiaContent[1].url);
+        firstSrc = firstTrending.getAttribute("src")
+        secondSrc = secondTrending.getAttribute("src");
+        thirdSrc = thirdTrending.getAttribute("src");
+        firstTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", thirdSrc);
+        thirdTrending.setAttribute("src", copiaContent[0].url);
     }
     else {
         // firstTrending.setAttribute("src", copiaContent[indice+1].url);
         console.log("entre aquiiiii");
         firstSrc = firstTrending.getAttribute("src")
         secondSrc = secondTrending.getAttribute("src");
-        secondTrending.setAttribute("src", firstSrc);
-        thirdTrending.setAttribute("src", secondSrc);
-        firstTrending.setAttribute("src", copiaContent[indice-1].url);
+        thirdSrc = thirdTrending.getAttribute("src");
+        firstTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", thirdSrc);
+        thirdTrending.setAttribute("src", copiaContent[indice+1].url);
     }
 });
 
 leftSlider.addEventListener('click', () => {
     console.log("left-slide");
-    let indice = getIndexUrl(thirdTrending.getAttribute("src"), copiaContent);
+    let indice = getIndexUrl(firstTrending.getAttribute("src"), copiaContent);
     console.log(indice);
     let firstSrc = "";
     let secondSrc = "";
-    if(indice === copiaContent.length -1){
+    let thirdSrc = "";
+    if(indice === 0){
         console.log("otro aqui");
-        secondTrending.setAttribute("src", copiaContent[19].url);
-        thirdTrending.setAttribute("src", copiaContent[0].url);
-        firstTrending.setAttribute("src", copiaContent[18].url);
+        secondSrc = secondTrending.getAttribute("src");
+        thirdSrc = thirdTrending.getAttribute("src");
+        firstSrc = firstTrending.getAttribute("src");
+        thirdTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", firstSrc);
+        firstTrending.setAttribute("src", copiaContent[19].url);
     }
     else {
         // firstTrending.setAttribute("src", copiaContent[indice+1].url);
         console.log("entre aquiiiii");
         secondSrc = secondTrending.getAttribute("src");
         thirdSrc = thirdTrending.getAttribute("src");
-        firstTrending.setAttribute("src", secondSrc);
-        secondTrending.setAttribute("src", thirdSrc);
-        thirdTrending.setAttribute("src", copiaContent[indice+1].url);
+        firstSrc = firstTrending.getAttribute("src");
+        thirdTrending.setAttribute("src", secondSrc);
+        secondTrending.setAttribute("src", firstSrc);
+        firstTrending.setAttribute("src", copiaContent[indice-1].url);
     }
 });
 
@@ -809,6 +781,260 @@ imgFound12.addEventListener("mouseenter", (e) => {
     capaOpaca.appendChild(containerThreeBtns);
 });
 
+imgFound13.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound13.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound14.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound14.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound15.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound15.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound16.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound16.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound17.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound17.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+
+imgFound18.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound18.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound19.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound19.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound20.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound20.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound21.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound21.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound22.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound22.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound23.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound23.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+imgFound24.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound24.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+});
+
+
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -816,8 +1042,6 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-// var prodId = getParameterByName('modoNocturnoOn');
-// console.log(prodId);
+let palabraBuscada = document.getElementById("palabraBuscada");
 
-// var prodDe = getParameterByName('lookingFor');
-// console.log(prodDe);
+palabraBuscada.textContent = lookingFor;
