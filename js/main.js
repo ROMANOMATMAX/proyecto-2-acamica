@@ -21,6 +21,15 @@ localStorage.setItem("modoNocturnoOn", modoNocturnoOn);
 var btnNocturneMode = document.getElementById("boton-menu");
 btnNocturneMode.addEventListener("change", validacionCheckbox, false);
 
+//variables para funcionalidad agregar a favoritos
+let listaFavoritos = [];
+let primeraPasada = true;
+// localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+// listaFavoritos = JSON.parse(localStorage.getItem("listaFavoritosLocalStorage"));
+let saveThirdTrendingGif;
+let saveSecondTrendingGif;
+let saveFirstTrendingGif;
+
 function validacionCheckbox () {
     var checked = btnNocturneMode.checked;
     if(checked)
@@ -188,7 +197,7 @@ let copiaContent =[];
 
 
 (function() {
-    let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=20`;
+    let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=24`;
     fetch(url)
     .then( response => response.json()) //.json es tmb una funcion asincrona que resp con promesa
     .then(content => {
@@ -205,6 +214,7 @@ let copiaContent =[];
             rObj.url = obj.images.downsized.url
             return rObj;
             });
+        localStorage.setItem('copiaContent', JSON.stringify(copiaContent));
         firstTrending.setAttribute("src", content.data[0].images.downsized.url);
         secondTrending.setAttribute("src", content.data[1].images.downsized.url);
         thirdTrending.setAttribute("src", content.data[2].images.downsized.url);
@@ -270,68 +280,132 @@ let username = document.createElement("p");
 let title = document.createElement("p");
 let containerThreeBtns = document.createElement("div");
 
-thirdImage.addEventListener("mouseenter", (e) => {
-    // e.preventDefault();
-    let indiceInterno = getIndexUrl(thirdImage.getAttribute("src"));
-    console.log("mouseenterImg3");
-    console.log(e.target);
-    // setTimeout(()=> {
-    capaOpaca.className = "capaOpaca";
-    e.target.parentNode.insertBefore(capaOpaca, e.target);
-    username.textContent = copiaContent[indiceInterno].username;
-    username.className = "user-name";
-    capaOpaca.appendChild(username);
-    // e.target.parentNode.insertBefore(username, capaOpaca);
-    title.textContent = copiaContent[indiceInterno].title;
-    title.className = "title";
-    capaOpaca.appendChild(title);
-    // e.target.parentNode.insertBefore(title, username);
-    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
-    <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
-    containerThreeBtns.className ="container-three-btns";
-    capaOpaca.appendChild(containerThreeBtns);
-    // e.target.parentNode.insertBefore(containerThreeBtns, title);
-    // },500);
-        // let capaOpaca = document.createElement("div");
-        // capaOpaca.className = "capaOpaca";
-        // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    // let capaOpaca = document.createElement("div");
-    // capaOpaca.className = "capaOpaca";
-    // e.target.parentNode.insertBefore(capaOpaca, e.target);
+// thirdImage.addEventListener("mouseenter", (e) => {
+//     // e.preventDefault();
+//     let indiceInterno = getIndexUrl(thirdImage.getAttribute("src"));
+//     console.log("mouseenterImg3");
+//     console.log(e.target);
+//     // setTimeout(()=> {
+//     capaOpaca.className = "capaOpaca";
+//     e.target.parentNode.insertBefore(capaOpaca, e.target);
+//     username.textContent = copiaContent[indiceInterno].username;
+//     username.className = "user-name";
+//     capaOpaca.appendChild(username);
+//     // e.target.parentNode.insertBefore(username, capaOpaca);
+//     title.textContent = copiaContent[indiceInterno].title;
+//     title.className = "title";
+//     capaOpaca.appendChild(title);
+//     // e.target.parentNode.insertBefore(title, username);
+//     let listaFavoritos = JSON.parse(localStorage.getItem("listaFavoritosLocalStorage"));
+//     if(listaFavoritos.includes(copiaContent[indiceInterno])) {
+//         containerThreeBtns.innerHTML = `<img src='./assets/icon-fav-active.svg' id='save-as-favorite'>
+//         <img src='./assets/icon-download.svg'>
+//         <img src='./assets/icon-max-normal.svg'>`;    
+//     }
+//     else {
+//         containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg' id='save-as-favorite'>
+//         <img src='./assets/icon-download.svg'>
+//         <img src='./assets/icon-max-normal.svg'>`;
+//     }
+//     capaOpaca.appendChild(containerThreeBtns);
+//     containerThreeBtns.className ="container-three-btns";
+//     capaOpaca.appendChild(containerThreeBtns);
+//     saveThirdTrendingGif = document.getElementById('save-as-favorite');
+//     saveThirdTrendingGif.addEventListener("mouseenter", () => {
+//         if(saveThirdTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+//             saveThirdTrendingGif.setAttribute("src", './assets/icon-fav-hover.svg');
+//         }
+//     })
+//     saveThirdTrendingGif.addEventListener("mouseleave", () => {
+//         if(saveThirdTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+//             saveThirdTrendingGif.setAttribute("src", './assets/icon-fav.svg');
+//         }
+//     })
+//     saveThirdTrendingGif.addEventListener("click", () => {
+//         if(!listaFavoritos.includes(copiaContent[indiceInterno])) {
+//             saveThirdTrendingGif.setAttribute("src", './assets/icon-fav-active.svg')
+//             listaFavoritos.push(copiaContent[indiceInterno]);
+//             localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+//         }
+//         else {
+//             saveThirdTrendingGif.setAttribute("src", './assets/icon-fav.svg')
+//             listaFavoritos.splice(listaFavoritos.indexOf(copiaContent[indiceInterno]), 1);
+//             localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+//         }
+//     });
+//     // e.target.parentNode.insertBefore(containerThreeBtns, title);
+//     // },500);
+//         // let capaOpaca = document.createElement("div");
+//         // capaOpaca.className = "capaOpaca";
+//         // e.target.parentNode.insertBefore(capaOpaca, e.target);
+//     // let capaOpaca = document.createElement("div");
+//     // capaOpaca.className = "capaOpaca";
+//     // e.target.parentNode.insertBefore(capaOpaca, e.target);
     
-});
+// });
 
-secondImage.addEventListener("mouseenter", (e) => {
-    // e.preventDefault();
-    let indiceInterno = getIndexUrl(secondImage.getAttribute("src"));
-    console.log("mouseenterImg3");
-    console.log(e.target);
-    // setTimeout(()=> {
-    capaOpaca.className = "capaOpaca";
-    e.target.parentNode.insertBefore(capaOpaca, e.target);
-    username.textContent = copiaContent[indiceInterno].username;
-    username.className = "user-name";
-    capaOpaca.appendChild(username);
-    // e.target.parentNode.insertBefore(username, capaOpaca);
-    title.textContent = copiaContent[indiceInterno].title;
-    title.className = "title";
-    capaOpaca.appendChild(title);
-    // e.target.parentNode.insertBefore(title, username);
-    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
-    <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
-    containerThreeBtns.className ="container-three-btns";
-    capaOpaca.appendChild(containerThreeBtns);
-    // },500);
-        // let capaOpaca = document.createElement("div");
-        // capaOpaca.className = "capaOpaca";
-        // e.target.parentNode.insertBefore(capaOpaca, e.target);
-    // let capaOpaca = document.createElement("div");
-    // capaOpaca.className = "capaOpaca";
-    // e.target.parentNode.insertBefore(capaOpaca, e.target);
+// secondImage.addEventListener("mouseenter", (e) => {
+//     // e.preventDefault();
+//     let indiceInterno = getIndexUrl(secondImage.getAttribute("src"));
+//     console.log("mouseenterImg3");
+//     console.log(e.target);
+//     // setTimeout(()=> {
+//     capaOpaca.className = "capaOpaca";
+//     e.target.parentNode.insertBefore(capaOpaca, e.target);
+//     username.textContent = copiaContent[indiceInterno].username;
+//     username.className = "user-name";
+//     capaOpaca.appendChild(username);
+//     // e.target.parentNode.insertBefore(username, capaOpaca);
+//     title.textContent = copiaContent[indiceInterno].title;
+//     title.className = "title";
+//     capaOpaca.appendChild(title);
+//     // e.target.parentNode.insertBefore(title, username);
+//     let listaFavoritos = JSON.parse(localStorage.getItem("listaFavoritosLocalStorage"));
+//     if(listaFavoritos.includes(copiaContent[indiceInterno])) {
+//         containerThreeBtns.innerHTML = `<img src='./assets/icon-fav-active.svg' id='save-as-favorite'>
+//         <img src='./assets/icon-download.svg'>
+//         <img src='./assets/icon-max-normal.svg'>`;    
+//     }
+//     else {
+//         containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg' id='save-as-favorite'>
+//         <img src='./assets/icon-download.svg'>
+//         <img src='./assets/icon-max-normal.svg'>`;
+//     }
+//     capaOpaca.appendChild(containerThreeBtns);
+//     containerThreeBtns.className ="container-three-btns";
+//     capaOpaca.appendChild(containerThreeBtns);
+//     saveSecondTrendingGif = document.getElementById('save-as-favorite');
+//     saveSecondTrendingGif.addEventListener("mouseenter", () => {
+//         if(saveSecondTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+//             saveSecondTrendingGif.setAttribute("src", './assets/icon-fav-hover.svg');
+//         }
+//     })
+//     saveSecondTrendingGif.addEventListener("mouseleave", () => {
+//         if(saveSecondTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+//             saveSecondTrendingGif.setAttribute("src", './assets/icon-fav.svg');
+//         }
+//     })
+//     saveSecondTrendingGif.addEventListener("click", () => {
+//         if(!listaFavoritos.includes(copiaContent[indiceInterno])) {
+//             saveSecondTrendingGif.setAttribute("src", './assets/icon-fav-active.svg')
+//             listaFavoritos.push(copiaContent[indiceInterno]);
+//             localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+//         }
+//         else {
+//             saveSecondTrendingGif.setAttribute("src", './assets/icon-fav.svg')
+//             listaFavoritos.splice(listaFavoritos.indexOf(copiaContent[indiceInterno]), 1);
+//             localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+//         }
+//     });
+//     // },500);
+//         // let capaOpaca = document.createElement("div");
+//         // capaOpaca.className = "capaOpaca";
+//         // e.target.parentNode.insertBefore(capaOpaca, e.target);
+//     // let capaOpaca = document.createElement("div");
+//     // capaOpaca.className = "capaOpaca";
+//     // e.target.parentNode.insertBefore(capaOpaca, e.target);
     
-});
+// });
 
 firstImage.addEventListener("mouseenter", (e) => {
     // e.preventDefault();
@@ -349,11 +423,113 @@ firstImage.addEventListener("mouseenter", (e) => {
     title.className = "title";
     capaOpaca.appendChild(title);
     // e.target.parentNode.insertBefore(title, username);
-    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
-    <img src='./assets/icon-download.svg'>
-    <img src='./assets/icon-max-normal.svg'>`;
-    containerThreeBtns.className ="container-three-btns";
-    capaOpaca.appendChild(containerThreeBtns);
+    // // let listaFavoritos = JSON.parse(localStorage.getItem("listaFavoritosLocalStorage"));
+    // console.log(listaFavoritos);
+    // console.log(copiaContent[indiceInterno]);
+    // console.log(copiaContent);
+    // console.log(listaFavoritos.includes(copiaContent[indiceInterno]));
+    if(primeraPasada) {
+        containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg' id='save-as-favorite'>
+        <img src='./assets/icon-download.svg'>
+        <img src='./assets/icon-max-normal.svg'>`;
+        containerThreeBtns.className ="container-three-btns";
+        capaOpaca.appendChild(containerThreeBtns);
+        saveFirstTrendingGif = document.getElementById('save-as-favorite');
+        saveFirstTrendingGif.addEventListener("mouseenter", () => {
+            if(saveFirstTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+                saveFirstTrendingGif.setAttribute("src", './assets/icon-fav-hover.svg');
+            }
+        })
+        saveFirstTrendingGif.addEventListener("mouseleave", () => {
+            if(saveFirstTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+                saveFirstTrendingGif.setAttribute("src", './assets/icon-fav.svg');
+            }
+        })
+        saveFirstTrendingGif.addEventListener("click", () => {
+            console.log(primeraPasada);
+            if(primeraPasada) {
+                console.log("se creo el localStorage list");
+                saveFirstTrendingGif.setAttribute("src", './assets/icon-fav-active.svg')
+                listaFavoritos.push(copiaContent[indiceInterno]);
+                localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+                primeraPasada = false;    
+            }
+            else {
+                console.log("considera que si esta en la lista");
+                saveFirstTrendingGif.setAttribute("src", './assets/icon-fav.svg')
+                listaFavoritos.splice(listaFavoritos.indexOf(copiaContent[indiceInterno]), 1);
+                localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+                primeraPasada = true;
+            }
+        });
+        localStorage.setItem("primerPasada", primeraPasada);
+    }
+    else {
+        containerThreeBtns.innerHTML = `<img src='./assets/icon-fav-active.svg' id='save-as-favorite'>
+        <img src='./assets/icon-download.svg'>
+        <img src='./assets/icon-max-normal.svg'>`;
+        containerThreeBtns.className ="container-three-btns";
+        capaOpaca.appendChild(containerThreeBtns);
+        saveFirstTrendingGif = document.getElementById('save-as-favorite');
+        let listafavs = JSON.parse(localStorage.getItem("listaFavoritosLocalStorage"));
+        if(listaFavoritos.includes(copiaContent[indiceInterno])|| listafavs[0].title === copiaContent[indiceInterno].title) {
+            containerThreeBtns.innerHTML = `<img src='./assets/icon-fav-active.svg' id='save-as-favorite'>
+            <img src='./assets/icon-download.svg'>
+            <img src='./assets/icon-max-normal.svg'>`;
+            containerThreeBtns.className ="container-three-btns";
+            capaOpaca.appendChild(containerThreeBtns);
+        }
+        else {
+            
+        }
+    }
+    // listafavs = JSON.parse(localStorage.getItem("listaFavoritosLocalStorage"));
+    // console.log(listafavs[0].url);
+    // console.log(copiaContent[0].url);
+    // console.log(indiceInterno);
+    // if(listafavs[0].title === copiaContent[0].title) {
+    //     console.log("funciono al fin");
+    // }
+    // if(listaFavoritos.includes(copiaContent[indiceInterno])|| listafavs[0].title === copiaContent[indiceInterno].title) {
+    //     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav-active.svg' id='save-as-favorite'>
+    //     <img src='./assets/icon-download.svg'>
+    //     <img src='./assets/icon-max-normal.svg'>`;    
+    // }
+    // else {
+    //     containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg' id='save-as-favorite'>
+    //     <img src='./assets/icon-download.svg'>
+    //     <img src='./assets/icon-max-normal.svg'>`;
+    // }
+    // containerThreeBtns.className ="container-three-btns";
+    // capaOpaca.appendChild(containerThreeBtns);
+    // saveFirstTrendingGif = document.getElementById('save-as-favorite');
+    // saveFirstTrendingGif.addEventListener("mouseenter", () => {
+    //     if(saveFirstTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+    //         saveFirstTrendingGif.setAttribute("src", './assets/icon-fav-hover.svg');
+    //     }
+    // })
+    // saveFirstTrendingGif.addEventListener("mouseleave", () => {
+    //     if(saveFirstTrendingGif.getAttribute("src") != './assets/icon-fav-active.svg') {
+    //         saveFirstTrendingGif.setAttribute("src", './assets/icon-fav.svg');
+    //     }
+    // })
+    // saveFirstTrendingGif.addEventListener("click", () => {
+    //     console.log(listaFavoritos);
+    //     console.log(copiaContent[indiceInterno]);
+    //     console.log(listaFavoritos.indexOf(copiaContent[indiceInterno]));
+    //     if(!listaFavoritos.includes(copiaContent[indiceInterno])) {
+    //         console.log("considera que no esta en la lista");
+    //         saveFirstTrendingGif.setAttribute("src", './assets/icon-fav-active.svg')
+    //         listaFavoritos.push(copiaContent[indiceInterno]);
+    //         localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+    //     }
+    //     else {
+    //         console.log("considera que si esta en la lista");
+    //         saveFirstTrendingGif.setAttribute("src", './assets/icon-fav.svg')
+    //         listaFavoritos.splice(listaFavoritos.indexOf(copiaContent[indiceInterno]), 1);
+    //         localStorage.setItem("listaFavoritosLocalStorage", JSON.stringify(listaFavoritos));
+    //     }
+    // });
     // },500);
         // let capaOpaca = document.createElement("div");
         // capaOpaca.className = "capaOpaca";
@@ -464,5 +640,3 @@ rightSlider.addEventListener("mouseleave", (e) => {
 }); 
 
 
-let url_string = window.location.href;
-console.log(url_string);

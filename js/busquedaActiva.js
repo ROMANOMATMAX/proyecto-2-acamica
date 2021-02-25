@@ -23,7 +23,7 @@ let expandImgFound21;
 let expandImgFound22;
 let expandImgFound23;
 let expandImgFound24;
-let expandFirstTrendingImg;
+let expandFirstTrendingImg;//Estos elementos no deberian existir, deberian ser elementos generados dinamicamente
 let expandSecondTrendingImg;
 let expandThirdTrendingImg;
 let copiaContent1;
@@ -46,7 +46,7 @@ var modoNocturnoOn = localStorage.getItem("modoNocturnoOn");
 console.log("hola soy modoNocturnoOn");
 // console.log(passedModoNocturno);
 console.log(lookingFor);
-const imgFound1 = document.getElementById("imgFound1");
+const imgFound1 = document.getElementById("imgFound1");//estos elementos no deberian existir deberian generarse dinamicamente
 const imgFound2 = document.getElementById("imgFound2");
 const imgFound3 = document.getElementById("imgFound3");
 const imgFound4 = document.getElementById("imgFound4");
@@ -219,6 +219,67 @@ lista.addEventListener("click", function (e) {
 
 
 //Esta es una funcion asincrona que nos trae las imagenes neceserias para la seccion trending
+/*******Refactorizacion Trending *****************/
+(function() {
+    let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=24`;
+    fetch(url)
+    .then( response => response.json()) //.json es tmb una funcion asincrona que resp con promesa
+    .then(({pagination, data}) => {
+        data.map(drawGifTrending)
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}());
+
+
+/**Esta funcion dibuja uno a uno los gif en una etiqueta imagen que luego se introduce en un div y luego se meta al contenedor, ademas le da la funcionalidad del hover*/
+function drawGifTrending(gif) { //map te recorre de a uno los elementos del array de objetos data
+    //En teoria tenemos en html unicamente un contenedor para todos estos gif crearemos un div y dentro de ese div un img cuyo src sera un div
+    let imageContainer = document.createElement("div");//A los elementos nuevos que creemos dinamicamente asignarle una clase para poder darles estilo
+    imageContainer.className = "imageContainer";
+    let img = document.createElement("img");
+    img.src = gif.images.original.url;//asignamos la url gipho como fuente de imagen
+    img.title = gif.title;//el titulo del gif tmb necesita ser renderizados
+    img.user = gif.user;//el usuario al cual perteneces el gif tmb necesita ser renderizados
+    img.id = gif.id; //tomamos el id esto permite el acceso a cualquier imagen de forma independiente
+    img.className = "small"//Dijimos que a cualquier elemento nuevo le crearemos una clase para poder darle estilo en css
+    imageContainer.append(img);
+    document.getElementById("trendingContainer").appendChild(imageContainer);
+    //antes yo creaba el efecto hover y botones por separado para cade gif con eventos mouseenter y mouseleave pero aca puedo creerle esos eventos a todos los gif sin necesidad de tanto código
+    hoverAndBtns();
+}
+
+function hoverAndBtns(img) {
+    document.getElementById(`${img.id}`).addEventListener("mouseenter", openScreen);
+    document.getElementById(`${img.id}`).addEventListener("mouseleave", openScreen);
+}
+
+
+
+imgFound1.addEventListener("mouseenter", (e) => {
+    // e.preventDefault();
+    let indiceInterno = getIndexUrl(imgFound1.getAttribute("src"), copiaContent1);
+    console.log("mouseenterImg3");
+    console.log(e.target);
+    // setTimeout(()=> {
+    capaOpaca.className = "capaOpaca";
+    e.target.parentNode.insertBefore(capaOpaca, e.target);
+    username.textContent = copiaContent1[indiceInterno].username;
+    username.className = "user-name";
+    capaOpaca.appendChild(username);
+    title.textContent = copiaContent1[indiceInterno].title;
+    title.className = "title";
+    capaOpaca.appendChild(title);
+    containerThreeBtns.innerHTML = `<img src='./assets/icon-fav.svg'>
+    <img src='./assets/icon-download.svg'>
+    <img src='./assets/icon-max-normal.svg' id = 'expandImgFound1'>`;
+    containerThreeBtns.className ="container-three-btns";
+    capaOpaca.appendChild(containerThreeBtns);
+    expandImgFound1 = document.getElementById("expandImgFound1");
+    expandImgFound1.addEventListener("click", ()=>window.document.location = '../gif-max.html'+ '?indice=' + indiceInterno + '&from=searchFunction');
+});
+
 (function() {
     let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=24`;
     fetch(url)

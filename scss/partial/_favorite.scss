@@ -1,0 +1,52 @@
+#favorites {
+    display: none;
+    text-align: center;
+}
+
+.favoriteContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.trashIcon {
+    background: url("../images/icon_trash.svg") 0 0 no-repeat;
+    cursor: pointer;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 5%;
+    left: 20%;
+}
+
+.trashIcon:hover {
+    background: url("../images/icon_trash_hover.svg") 0 0 no-repeat;
+}
+
+.heartIcon {
+    background: url("../../assets/icon-fav.svg") 0 0 no-repeat;
+    cursor: pointer;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 5%;
+    left: 20%;
+}
+
+.heartIcon:hover {
+    background: url("../../assets/icon-fav-hover.svg") 0 0 no-repeat;
+}
+
+.heartIconActive {
+    background: url("../../assets/icon-fav-active.svg") 0 0 no-repeat;
+    cursor: pointer;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 5%;
+    left: 20%;
+}
+
+// .heartIcon:active {
+//     background: url("../images/icon_fav_active.svg") center center no-repeat;
+// }

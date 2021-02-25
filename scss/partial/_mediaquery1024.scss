@@ -297,6 +297,34 @@
                 grid-column-gap: 2%;
                 grid-template-rows: auto;
                 grid-template-areas: "left-slider left-img center-img right-img right-slider";
+                .trendingContainer {
+                    div {
+                        a.downloadIcon {
+                            position: absolute;
+                            top: 5%;
+                            left: 45%;
+                            width: 35px;
+                            height: 35px;
+                            background: url("../../assets/icon-download.svg") 0 0 no-repeat;
+                            cursor: pointer;
+                        }
+                        a.downloadIcon:hover {
+                            background: url("../../assets/icon-download-hover.svg") 0 0 no-repeat;
+                        }
+                        a.heartIcon {
+                            background: url("../../assets/icon-fav.svg") 0 0 no-repeat;
+                            cursor: pointer;
+                            position: absolute;
+                            width: 35px;
+                            height: 35px;
+                            top: 5%;
+                            left: 20%;
+                        }
+                        a.heartIcon:hover {
+                            background: url("../../assets/icon-fav-hover.svg") 0 0 no-repeat;
+                        }
+                    }   
+                }
                 div {
                     position: relative;
                     .trendingImgToHide {
