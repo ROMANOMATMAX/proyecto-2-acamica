@@ -112,10 +112,10 @@ section.seccion-2 {
                 z-index: 3;
             }
         }
-        div:nth-child(1) {
+        .sliderBtnLeft {
             display: none;
         }
-        div:nth-child(26) {
+        .sliderBtnRight {
             display: none;
         }
     }

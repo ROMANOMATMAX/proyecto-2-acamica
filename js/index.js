@@ -2,16 +2,26 @@ let APIKEY = "QyOxncNKEan7B4abTimnsBt6bl87ZloY";
 
 //Esta es una funcion asincrona que nos trae las imagenes neceserias para la seccion trending
 /*******Refactorizacion Trending *****************/
-(function() {
-    let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=12`;
+async function queryToGifTrending(limit) {
+    let offset = limit -12; 
+    console.log(`soy el nuevo offset: ${offset}`);
+    let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=12&offset=${offset}`;
     fetch(url)
     .then( response => response.json()) //.json es tmb una funcion asincrona que resp con promesa
     .then(({pagination, data}) => {
         data.map(drawGifTrending)
+        carrusel(offset);
     })
     .catch(err => {
         console.log(err);
     })
+}
+
+
+(function() {
+    let limit = 12;
+    localStorage.setItem("limit", limit)
+    queryToGifTrending(limit);
 }());
 
 
@@ -161,4 +171,104 @@ function searchFavorite () {
         }  
     }
     return gifFound;
+}
+
+//la primera vez que llamemos a carrusel lo llamaremos con 0 y 3 (por que nos interesa que arranquen dibujados los 3 primeros)
+//la segunda vez arrancaremos con 12 y 15
+//la tercera vez arrancamos con 24 y 27
+//asi sucesivamente (la cantidad anterior +12)
+function carrusel (lowerLimit) {
+    let gifs = document.querySelectorAll(".imageContainer");
+    console.log(gifs);
+    for (let gif of gifs ) {
+        gif.style.display = "none"
+    }
+    let amountOfTrendingGifs = 3;
+    for(let i = 0; i<amountOfTrendingGifs; i++) {
+        gifs[lowerLimit+i].style.display = "initial"
+    }
+}
+
+function moveToRight () {
+    let gifs = document.querySelectorAll(".imageContainer");
+    console.log(gifs);
+    let positions = [];
+    for (let i = 0; i<gifs.length; i++) {
+        if(gifs[i].style.display === "initial") {
+            positions.push(i);
+        }
+    }
+    console.log(positions);
+    for (let gif of gifs ) {
+        gif.style.display = "none"
+    }
+    let amountOfTrendingGifs = 3;
+    for(let i = 0; i<amountOfTrendingGifs; i++) {
+        let numberToCompare = +localStorage.getItem("limit");
+        console.log(numberToCompare);
+        if(lookingForTheEndElement(positions, numberToCompare)){//si ejecuta este if significa que debe consultar por 12 mas
+            console.log("necesito consultar 12 gif trending adicionales");
+            queryToGifTrending(limitGenerator())
+            break;
+        }
+        else {
+            console.log("sigue trabajando con los trending ya disponibles");
+            gifs[positions[i]+3].style.display = "initial"
+        }
+    }
+}
+
+function moveToleft () {
+    let gifs = document.querySelectorAll(".imageContainer");
+    console.log(gifs);
+    let positions = [];
+    for (let i = 0; i<gifs.length; i++) {
+        if(gifs[i].style.display === "initial") {
+            positions.push(i);
+        }
+    }
+    console.log(positions);
+    for (let gif of gifs ) {
+        gif.style.display = "none"
+    }
+    let amountOfTrendingGifs = 3;
+    for(let i = 0; i<amountOfTrendingGifs; i++) {
+        // let numberToCompare = +localStorage.getItem("limit");
+        // console.log(numberToCompare);
+        if(lookingForTheStartElement(positions)){//si ejecuta este if significa que debe consultar por 12 mas
+            console.log("necesito consultar 12 gif trending adicionales");
+            queryToGifTrending(limitGenerator())
+            break;
+        }
+        else {
+            console.log("sigue trabajando con los trending ya disponibles");
+            gifs[positions[i]-3].style.display = "initial"
+        }
+    }
+}
+
+function lookingForTheEndElement(position, numberToCompare) {
+    for(let i = 0; i<position.length; i++) {
+        if(position[i] === numberToCompare -1){
+            return true;    
+        }
+    }
+    return false;
+}
+
+function lookingForTheStartElement(position, numberToCompare) {
+    for(let i = 0; i<position.length; i++) {
+        if(position[i] === 0){
+            return true;    
+        }
+    }
+    return false;
+}
+
+function limitGenerator() {
+    let limit = +localStorage.getItem("limit");
+    console.log(typeof(limit))
+    limit += 12;
+    localStorage.setItem("limit", limit);
+    return limit;
 }
