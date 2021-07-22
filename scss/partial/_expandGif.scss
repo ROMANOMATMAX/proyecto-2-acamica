@@ -1,0 +1,182 @@
+
+#expandGif {
+    display: none;
+    body.dark & {
+        display: none;
+        background: #37383C;
+    }
+}
+
+.expandedGifContainer {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 50px 200px 50px;
+    grid-column-gap: 10px;
+    justify-content: center;
+    align-content: center;
+    padding: 0 10%;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    body.dark {
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+        grid-template-rows: 50px 200px 50px;
+        grid-column-gap: 10px;
+        justify-content: center;
+        align-content: center;
+        padding: 0 10%;
+        background: #37383C;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.fullScreen {
+    background: url("../../assets/icon-max-normal.svg") 0 0 no-repeat;
+    position: absolute;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    top: 5%;
+    left: 70%;
+}
+
+.expandedImage {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.sliderBtnLeft-expand {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    align-self: center;
+    width: 30px;
+    justify-self: center;
+    cursor: pointer;
+}
+
+.sliderBtnRight-expand {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    width: 30px;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+}
+
+p#expandedUser {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    font-size: 10px;
+}
+
+p#expandedTitle {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    font-size: 10px;
+}
+
+#expandGif span {
+    min-width: 50px;
+    min-height: 50px;
+}
+
+
+.closeGif {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    align-self: center;
+    justify-self: end;
+    cursor: pointer;
+    background: url("../../assets/close.svg") 0 0 no-repeat;
+    body.dark & {
+        grid-column: 3/4;
+        grid-row: 1/2;
+        align-self: center;
+        justify-self: end;
+        cursor: pointer;
+        background: url("../../assets/close-modo-noct.svg") 0 0 no-repeat;
+    }
+}
+
+.btnsAndTextContainer {
+    grid-column: 2/3;
+    grid-row: 3/4;
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 0.5fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 20px;
+}
+
+.saveGif {
+    grid-column: 2/3;
+    grid-row: 1/3;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+    background: url("../../assets/icon-fav.svg") 0 0 no-repeat;
+}
+
+.saveGif:hover {
+    background: url("../../assets/icon-fav-hover.svg") 0 0 no-repeat;
+}
+
+.saveGif:active {
+    background: url("../../assets/icon-fav-active.svg") 0 0 no-repeat;
+}
+
+.trashGif {
+    grid-column: 2/3;
+    grid-row: 1/3;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+    background: url("../../assets/icon-trash-normal.svg") 0 0 no-repeat;
+    &:hover {
+        background: url("../../assets/icon-trash-hover.svg") 0 0 no-repeat;
+    }
+}
+
+.downloadGif {
+    grid-column: 3/4;
+    grid-row: 1/3;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+    background: url("../../assets/icon-download.svg") 0 0 no-repeat; 
+}
+
+.downloadGif:hover {
+    background: url("../../assets/icon-download-hover.svg") 0 0 no-repeat;
+}
+
+
+.deleteGif {
+    display: none;
+    background: url("../../assets/icon-trash-normal.svg") 0 0 no-repeat;
+    // cursor: pointer;
+    // position: absolute;
+    // bottom: 40px;
+    // right: 30vw;
+}
+
+.heartIconExpanded {
+    grid-column: 2/3;
+    grid-row: 1/3;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+    background: url("../../assets/icon-fav-active.svg") 0 0 no-repeat;
+}

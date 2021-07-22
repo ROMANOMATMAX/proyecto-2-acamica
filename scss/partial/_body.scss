@@ -1,4 +1,22 @@
 body {
     border-top: 5px solid #572EE5;
     border-bottom: 5px solid #572EE5;
+    font-family: 'Montserrat', sans-serif;
+    color: #572EE5;
+    h1 {
+        font-weight: 700;
+        font-size: 25px;
+        text-align: center;
+        margin: 5% 11%;
+    }
+}
+
+body.dark {
+    h1 {
+        font-weight: 700;
+        font-size: 25px;
+        text-align: center;
+        margin: 5% 11%;
+        color: #FFF;
+    }
 }

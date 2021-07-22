@@ -1,0 +1,287 @@
+#searchResults {
+    display: none;
+    text-align: center;
+    h2 {
+        padding: 10px;
+    }
+    button#verMasBtn {
+        border-radius: 25px;
+        background: #FFF;
+        border: 1px solid #572EE5;
+        color: #572EE5;
+        font-weight: 700;
+        font-size: 13px;
+        height: 40px;
+        width: 110px;
+        display: block;
+        margin: 20px auto;
+        cursor: pointer;
+        &:hover {
+            background: #572EE5;
+            color: #FFF;
+        }
+        body.dark & {
+            border-radius: 25px;
+            background: #37383C;
+            border: 1px solid #FFF;
+            color: #FFF;
+            font-weight: 700;
+            font-size: 13px;
+            height: 40px;
+            width: 110px;
+            display: block;
+            margin: 20px auto;
+            cursor: pointer;
+            &:hover {
+                background: #FFF;
+                color: #000;
+            }
+        }
+    }
+}
+
+span.softerColor {
+    color: #5ED7C6;
+}
+
+.small {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.searchContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 5%;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    .smallNoresult {
+        grid-column: 1/3;
+        width: 70%;
+        height: 100%;
+        object-fit: cover;
+        margin: 0 auto;
+        padding: 35px;
+    }
+    .searchAgain {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        color: #50E3C2;
+        text-align: center;
+        line-height: 25px;
+        position: absolute;
+        left: 22%;
+        bottom: 0;
+        body.dark & {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: #FFF;
+            text-align: center;
+            line-height: 25px;
+            position: absolute;
+            left: 22%;
+            bottom: 0;
+        }
+    }
+    div {
+        position:   relative;
+        a.downloadIcon {
+            position: absolute;
+            top: 5%;
+            left: 45%;
+            width: 35px;
+            height: 35px;
+            background: url("../../assets/icon-download.svg") 0 0 no-repeat;
+            cursor: pointer;
+            &:hover {
+                background: url("../../assets/icon-download-hover.svg") 0 0 no-repeat;
+            }
+        }
+        a.heartIcon {
+            background: url("../../assets/icon-fav.svg") 0 0 no-repeat;
+            cursor: pointer;
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            top: 5%;
+            left: 20%;
+            &:hover {
+                background: url("../../assets/icon-fav-hover.svg") 0 0 no-repeat;
+            }
+        }
+        img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+    }
+}
+
+#search img {
+    max-width: 75%;
+    display: block;
+    margin: 0 auto;
+}
+
+form {
+    position: relative;
+    border: 1px solid #572EE5;
+    border-radius: 27px;
+    width: 90vw;
+    margin: 0 auto;
+    padding: 0;
+    body.dark & {
+        position: relative;
+        border: 1px solid #FFF;
+        border-radius: 27px;
+        width: 90vw;
+        margin: 0 auto;
+        padding: 0; 
+    }
+}
+
+form input[type="search"] {
+    display: block;
+    margin: 0 auto;
+    width: 90vw;
+    line-height: 50px;
+    border: 1px solid #572EE5;
+    border-radius: 27px;
+    font-size: 16px;
+    padding-left: 20%;
+    body.dark & {
+        display: block;
+        margin: 0 auto;
+        width: 90vw;
+        line-height: 50px;
+        border: 1px solid #FFF;
+        border-radius: 27px;
+        font-size: 16px;
+        padding-left: 20%;
+        background: #37383C;
+        color: #FFF;
+    }
+}
+
+.searchIcon {
+    background: url("../../assets/search.svg") 0 0 no-repeat;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 40px;
+    top: 15px;
+    cursor:pointer;
+    border: 0;
+    body.dark & {
+        background: url("../../assets/search_noct.svg") 0 0 no-repeat;
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        right: 40px;
+        top: 15px;
+        cursor:pointer;
+        border: 0;
+    }
+}
+
+
+form input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    height: 35px;
+    width: 35px;
+    background: url("../../assets/close.svg") 0 0 no-repeat;
+    body.dark & {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: absolute;
+        right: 10px;
+        top: 18px;
+        height: 35px;
+        width: 35px;
+        background: url("../../assets/close-modo-noct.svg") 0 0 no-repeat;
+    }
+}
+
+
+#search input[type="search"]:valid + input:nth-of-type(2) {
+    background: url("../../assets/search_grey.svg") 0 0 no-repeat;
+    right: 0;
+    left: 30px;
+    padding: 0;
+}
+
+#searchSuggestions {
+    display: none;
+    position: relative;
+    left: 30px;
+}
+
+.searchAgain {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #50E3C2;
+    text-align: center;
+    line-height: 25px;
+    position: absolute;
+    left: 22%;
+    bottom: 0;
+}
+
+.smallNoresult {
+    grid-column: 1/3;
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    padding: 35px;
+}
+
+// .imageContainer {
+//     max-height: 100px;
+// }
+
+li.suggestionItem {
+    background: url(../../assets/search_grey.svg) 5px 0 no-repeat;
+    list-style: none;
+    color: #9CAFC3;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    padding-left: 30px;
+    line-height: 30px;
+}
+
+div#trendingTopics {
+    .titleOfTrendinItems {
+        margin: 10px 0;
+        text-align: center;
+        font-weight: 600;
+        body.dark & {
+            margin: 10px 0;
+            text-align: center;
+            font-weight: 600;
+            color: #FFF;
+        }
+    }
+    #temasTrending {
+        margin: 10px 0;
+        text-align: center;
+        padding: 0 30px;
+        line-height: 25px;
+        a {
+            cursor: pointer;
+        }
+        body.dark & {
+            margin: 10px 0;
+            text-align: center;
+            padding: 0 30px;
+            line-height: 25px;
+            color: #FFF; 
+        }
+    }
+}

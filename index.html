@@ -6,29 +6,42 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&family=Roboto:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css\style.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
     <header>
         <div class="container-flex">
-            <div class="logo"><img src="./assets/logo-mobile-modo-noct.svg" alt="logo"><p>GIFOS</p></div>
+            <div class="logo"><img src="./assets/logo-mobile-modo-noct.svg" alt="logo" id="logo"><p id="paragraphLogo">GIFOS</p></div>
             <nav class="menu-navegacion">
                 <input type="checkbox" name="boton-menu" id="boton-menu">
                 <label for="boton-menu"><img id = "menu-hamburguesa" src="./assets/burger.svg" alt=""></label>
                 <ul>
                     <li class="item-1" id="a_modoNocturno">Modo Nocturno</li>
                     <span class="linea-divisoria"></span>
-                    <li class="item-2"><a href="">Favoritos</a></li>
+                    <li class="item-2" id="a_favoritos"><a href="javascript:void(0)" id="favoritos">Favoritos</a></li>
                     <span class="linea-divisoria"></span>
-                    <li class="item-3"><a href="">Mis GIFOS</a></li>
+                    <li class="item-3" id="a_misGifos"><a href="javascript:void(0)">Mis GIFOS</a></li>
                     <span class="linea-divisoria"></span>
-                    <li class="item-4"><button><img src="./assets/button-crear-gifo.svg" alt=""></button></li>
+                    <li class="item-4"><img alt="" id="linkyourGif" class="linkyourGif"></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-        <section class="seccion-1">
+        <section id="search">
+            <h1>Inspírate, busca, guarda y crea los mejores <span class="softerColor">GIFOS</span></h1>
+            <img src="./assets/ilustra_header.svg" alt="">
+            <form action="" id="formulario" name="formulario">
+                <input type="search" id="searchBar" class="search" placeholder="Busca GIFOS y más" autocomplete="off" required>
+                <input type="submit" id="searchIcon" class="searchIcon" value= "">
+                <ul id="searchSuggestions"></ul>
+            </form>
+            <div id="trendingTopics" >
+                <p class="titleOfTrendinItems">Trending: </p>
+                <p id="temasTrending"></p>
+            </div>
+        </section>
+        <!-- <section class="seccion-1" id="search">
             <h1>Inspírate, busca, guarda, y crea los mejores <span class="palabra-gifos">GIFOS</span></h1>
             <div class="imagen-seccion-1">
                 <img src="./assets/ilustra_header.svg" alt="">
@@ -45,15 +58,14 @@
                 <h3>Trending:</h3>
                 <p>Reactions, Entertainment, Sports, Stickers, Artists</p>
             </div>
-        </section>
-        <section class="seccion-2">
-            <h2>Trending GIFOS</h2>
-            <p>Mira los últimos GIFOS de nuestra comunidad.</p>
-        <!-- ACA FALTA AGREGAR EL CARRUSEL DE IMAGENES AVERIGUAR COMO SE HACE EL HTML -->
-            <div class="slider">
-                <div><img src="./assets/button-slider-left.svg" alt="" id="left-slider" class="sliderBtnLeft"></div>
-                    <div class="trendingContainer" id="trendingContainer"></div>
-                <div><img src="./assets/Button-Slider-right.svg" alt="" id="right-slider" class="sliderBtnRight"></div>
+        </section> -->
+        <section id="searchResults">
+            <h2 id="searchTitle">Title</h2>
+            <div id="searchContainer" class="searchContainer">
+    
+            </div>
+            <div id="verMasVtnContainer">
+                <button id="verMasBtn" type="button" class="verMasBtn">VER MÁS</button>
             </div>
         </section>
         <section id="favorites">
@@ -64,18 +76,100 @@
                     <button id="verMasBtnFavs" type="button" class="verMasBtnFavs">VER MÁS</button>
                 </div>
         </section>
+
+        <section id="myGifos">
+            <img src="./assets/icon-mis-gifos.svg" class="centradoMargin" alt="icono favoritos">
+            <h2>Mis GIFOS</h2>
+                <div id="myGifosContainer" class="contenedorEnBandas">
+                </div>        
+                <div id="botonVerMasMisGifosContenedor" class="VerMasContenedor">
+                    <button id="verMasBtnMyGifos" class="botonRedondeado">VER MÁS</button>
+            </div>
+        </section>
+
+        <section class="seccion-2" id="trending">
+            <h2>Trending GIFOS</h2>
+            <p>Mira los últimos<br>GIFOS de nuestra comunidad.</p>
+        <!-- ACA FALTA AGREGAR EL CARRUSEL DE IMAGENES AVERIGUAR COMO SE HACE EL HTML -->
+            <div class="slider">
+                <div><img src="./assets/button-slider-left.svg" alt="" id="left-slider" class="sliderBtnLeft"></div>
+                    <div class="trendingContainer" id="trendingContainer"></div>
+                <div><img src="./assets/Button-Slider-right.svg" alt="" id="right-slider" class="sliderBtnRight"></div>
+            </div>
+        </section>
+
+        <section id="createYourGif">
+            <div id="yourOwnGifContainer">
+                <img id="camara" src="./assets/captura/camara_luz.svg" alt="imagen de cámara">
+                <img id="film" src="./assets/captura/pelicula.svg" alt="imagen de cinta">
+                <div id="violetScreen" class="violetScreen">
+                    <div id="icons">
+                        <span id="downloadYourOwnGif" class="downloadYourOwnGif"></span>
+                        <span id="linkedYourOwnGif" class="linkedYourOwnGif"></span>
+                    </div>
+                    <img id="loadingImage" src="./assets/loader.svg" alt="icono de carga">
+                    <div id="textsYourOwnGif">
+                        <h2 class="titleYourOwnGif">Aquí podrás crear tus propios <span class="softerColor">GIFOS</span></h2>
+                        <p class="textOne">¡Crea tu GIFO en sólo 3 pasos!</p>
+                        <p class="textTwo">(sólo necesitas una cámara para grabar un video)</p>  
+                    </div>
+                    <div id="giveYourPermission">
+                        <p class="titleYourOwnGif">¿Nos das acceso a tu cámara?</p>
+                        <p class="textOne">El acceso a tu camara será válido sólo</p>
+                        <p class="textTwo">por el tiempo en el que estés creando el GIFO.</p>
+                    </div>
+                    <div id="cutFrame">
+                        <svg viewBox="0 0 100 100" >
+                            <path d="M20,2 L2,2 L2,20" fill="none" stroke="#50E3C2" stroke-width="0.5" />
+                            <path d="M2,80 L2,98 L20,98" fill="none" stroke="#50E3C2" stroke-width="0.5" />
+                            <path d="M80,98 L98,98 L98,80" fill="none" stroke="#50E3C2" stroke-width="0.5" />
+                            <path d="M98,20 L98,2 L80,2" fill="none" stroke=" #50E3C2" stroke-width="0.5" />
+                        </svg>
+                    </div>
+                    <div id="videoContainer">
+                        <video id="video"></video>
+                        <p id="uploadText" class="uploadText">Estamos subiendo tu GIFO</p>
+                    </div>
+                </div>
+                <div id="steps">
+                    <img id="step1" class="centradoMargin" src="./assets/captura/paso_1.svg" alt="paso 1">
+                    <img id="step2" class="centradoMargin" src="./assets/captura/paso_2.svg" alt="paso 2">
+                    <img id="step3" class="centradoMargin" src="./assets/captura/paso_3.svg" alt="paso 3">
+                    <p id="timer" class="violetTextBold"><span id="minutes">00</span><span id="dobleDot">:</span><span id=seconds>00</span><span id="startRecordingAgain">REPETIR CAPTURA</span></p>
+                </div>
+                <hr class="line">
+                <button id="startProcess" class="btn">COMENZAR</button>
+                <button id="startRecording" class="btn">GRABAR</button>
+                <button id="endRecording" class="btn">FINALIZAR</button>
+                <button id="uploadYourGif" class="btn">SUBIR GIFO</button>
+                <button id="closeProcess" class="btn">CERRAR</button>
+            </div>
+        </section>
+
+        <section id="expandGif" class="expandGif">
+            <img src="./assets/button-slider-left.svg" alt="" id="left-slider-expand" class="sliderBtnLeft-expand">
+            <span class="closeGif" id="closeGif"></span>
+            <div class="btnsAndTextContainer" id="btnsAndTextContainer">
+                <span class="downloadGif" id="downloadGif"></span>
+                <span class="saveGif" id="saveGif"></span>
+                <span class="deleteGif" id="deleteGif"></span>
+            </div>
+            <img src="./assets/Button-Slider-right.svg" alt="" id="right-slider-expand" class="sliderBtnRight-expand">
+        </section>
+
         <footer class="footer">
             <p class="encabezado-footer">Compartir en:</p>
             <div class="redes-sociales">
                 <ul>
-                    <li><a href=""><img src="./assets/icon_facebook.svg" alt=""></a></li>
-                    <li><a href=""><img src="./assets/icon-twitter.svg" alt=""></a></li>
-                    <li><a href=""><img src="./assets/icon_instagram.svg" alt=""></a></li>
+                    <li><a href=""><img src="./assets/icon_facebook.svg" alt="" id="fb-icon"></a></li>
+                    <li><a href=""><img src="./assets/icon-twitter.svg" alt="" id="tw-icon"></a></li>
+                    <li><a href=""><img src="./assets/icon_instagram.svg" alt="" id="ig-icon"></a></li>
                 </ul>
             </div>
             <p class="pie-footer">© GIFOS 2020 All Rights Reserved.</p>
         </footer>
     </main>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
